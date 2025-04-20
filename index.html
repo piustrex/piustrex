@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pius Trex Shoes - Step Into Style</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333333;
+      line-height: 1.8;
+      background: linear-gradient(135deg, #f9ecec 0%, #ffffff 100%);
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
+
+    /* Decorative Divider */
+    .divider {
+      width: 120px;
+      height: 4px;
+      background: linear-gradient(to right, #e53e3e, #ff7878);
+      border-radius: 2px;
+      margin: 20px auto;
+    }
+
+    /* Header Styles */
+    header {
+      background: #ffffff;
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      transition: padding 0.3s ease, box-shadow 0.3s ease;
+    }
+    header.scrolled {
+      padding: 10px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo img {
+      width: 60px;
+      height: 60px;
+      transition: transform 0.3s ease;
+    }
+    .logo img:hover {
+      transform: rotate(10deg) scale(1.1);
+    }
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+    nav ul li a {
+      color: #333333;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 10px 15px;
+      border-radius: 25px;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+    nav ul li a:hover {
+      background: linear-gradient(135deg, #e53e3e 0%, #ff7878 100%);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+    nav ul li a.active {
+      background: linear-gradient(135deg, #e53e3e 0%, #ff7878 100%);
+      color: #ffffff;
+    }
+
+    /* Hero Section with Video Background */
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff;
+      overflow: hidden;
+    }
+    .hero-section video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-content h1 {
+      font-size: 72px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .hero-content.visible h1 {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hero-content p {
+      font-size: 24px;
+      font-weight: 300;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+    }
+    .hero-content.visible p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hero-content a {
+      padding: 15px 40px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #e53e3e 0%, #ff7878 100%);
+      color: #ffffff;
+      box-shadow: 0 5px 15px rgba(229, 62, 62, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+    }
+    .hero-content.visible a {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hero-content a:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(229, 62, 62, 0.5);
+    }
+
+    /* Featured Collection Section */
+    .featured-section {
+      padding: 120px 0;
+      background: #1a1a1a url('https://www.transparenttextures.com/patterns/asfalt-dark.png') repeat;
+      color: #ffffff;
+      text-align: center;
+    }
+    .featured-section h2 {
+      font-size: 48px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .featured-section h2.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .featured-section h2 i {
+      color: #e53e3e;
+      margin-right: 10px;
+    }
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 20px 0;
+    }
+    .featured-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      transition: transform 0.5s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .featured-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .featured-card img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .featured-card:hover img {
+      transform: scale(1.1);
+    }
+    .featured-card .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .featured-card:hover .overlay {
+      opacity: 1;
+    }
+    .featured-card .overlay h3 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+    .featured-card .overlay a {
+      padding: 10px 20px;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #e53e3e 0%, #ff7878 100%);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.3s ease;
+    }
+    .featured-card .overlay a:hover {
+      transform: scale(1.05);
+    }
+    .featured-card:hover {
+      transform: translateY(-5px) rotateX(10deg) rotateY(10deg);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Product Carousel Section */
+    .products-section {
+      padding: 120px 0;
+      text-align: center;
+      background: #ffffff url('https://www.transparenttextures.com/patterns/asfalt-dark.png') repeat;
+    }
+    .products-section h2 {
+      font-size: 48px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .products-section h2.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .products-section h2 i {
+      color: #e53e3e;
+      margin-right: 10px;
+    }
+    .carousel {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .carousel-item {
+      min-width: 33.33%;
+      padding: 0 15px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .carousel-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .carousel-card {
+      background: #fafafa;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .carousel-card:hover {
+      transform: translateY(-5px);
+    }
+    .carousel-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+    .carousel-card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 15px 0 10px;
+    }
+    .carousel-card p {
+      font-size: 14px;
+      font-weight: 300;
+      color: #555555;
+      margin-bottom: 15px;
+    }
+    .carousel-card a {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #e53e3e 0%, #ff7878 100%);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+    .carousel-card a:hover {
+      transform: scale(1.05);
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: #ffffff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 24px;
+      border-radius: 50%;
+      transition: background 0.3s ease;
+    }
+    .carousel-btn:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+    .carousel-btn.prev {
+      left: 10px;
+    }
+    .carousel-btn.next {
+      right: 10px;
+    }
+
+    /* Our Story Section */
+    .story-section {
+      padding: 120px 0;
+      background: #ffffff url('https://www.transparenttextures.com/patterns/asfalt-dark.png') repeat;
+      text-align: center;
+    }
+    .story-section h2 {
+      font-size: 48px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .story-section h2.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .story-section h2 i {
+      color: #e53e3e;
+      margin-right: 10px;
+    }
+    .story-content {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .story-text {
+      flex: 1;
+      text-align: left;
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .story-text.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .story-text p {
+      font-size: 16px;
+      font-weight: 300;
+      color: #555555;
+      margin-bottom: 20px;
+    }
+    .story-text a {
+      padding: 10px 20px;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #e53e3e 0%, #ff7878 100%);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.3s ease;
+    }
+    .story-text a:hover {
+      transform: scale(1.05);
+    }
+    .story-image {
+      flex: 1;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .story-image.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .story-image img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Customer Reviews Section */
+    .reviews-section {
+      padding: 120px 0;
+      background: #1a1a1a url('https://www.transparenttextures.com/patterns/asfalt-dark.png') repeat;
+      color: #ffffff;
+      text-align: center;
+    }
+    .reviews-section h2 {
+      font-size: 48px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reviews-section h2.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .reviews-section h2 i {
+      color: #e53e3e;
+      margin-right: 10px;
+    }
+    .reviews-carousel {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .reviews-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .review-item {
+      min-width: 100%;
+      padding: 0 15px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .review-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .review-card {
+      background: #fafafa;
+      border-radius: 15px;
+      padding: 25px;
+      color: #333333;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .review-card:hover {
+      transform: translateY(-5px);
+    }
+    .review-card .stars {
+      color: #e53e3e;
+      margin-bottom: 15px;
+    }
+    .review-card p {
+      font-size: 14px;
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+    .review-card span {
+      font-size: 14px;
+      font-weight: 600;
+      color: #e53e3e;
+    }
+    .reviews-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 24px;
+      border-radius: 50%;
+      transition: background 0.3s ease;
+    }
+    .reviews-btn:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+    .reviews-btn.prev {
+      left: 10px;
+    }
+    .reviews-btn.next {
+      right: 10px;
+    }
+
+    /* Style Guide Section */
+    .style-guide-section {
+      padding: 120px 0;
+      text-align: center;
+      background: #ffffff url('https://www.transparenttextures.com/patterns/asfalt-dark.png') repeat;
+    }
+    .style-guide-section h2 {
+      font-size: 48px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .style-guide-section h2.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .style-guide-section h2 i {
+      color: #e53e3e;
+      margin-right: 10px;
+    }
+    .style-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 20px 0;
+    }
+    .style-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .style-card.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .style-card img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .style-card:hover img {
+      transform: scale(1.1);
+    }
+    .style-card .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .style-card:hover .overlay {
+      opacity: 1;
+    }
+    .style-card .overlay h3 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+    .style-card .overlay p {
+      font-size: 14px;
+      font-weight: 300;
+      color: #ffffff;
+      max-width: 80%;
+    }
+
+    /* Instagram Feed Section */
+    .instagram-section {
+      padding: 120px 0;
+      text-align: center;
+      background: #1a1a1a url('https://www.transparenttextures.com/patterns/asfalt-dark.png') repeat;
+      color: #ffffff;
+    }
+    .instagram-section h2 {
+      font-size: 48px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .instagram-section h2.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .instagram-section h2 i {
+      color: #e53e3e;
+      margin-right: 10px;
+    }
+    .instagram-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px 0;
+    }
+    .instagram-post {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .instagram-post.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .instagram-post img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .instagram-post:hover img {
+      transform: scale(1.1);
+    }
+    .instagram-post .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .instagram-post:hover .overlay {
+      opacity: 1;
+    }
+    .instagram-post .overlay i {
+      color: #ffffff;
+      font-size: 24px;
+    }
+    .instagram-section a {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 15px 30px;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #e53e3e 0%, #ff7878 100%);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.3s ease;
+    }
+    .instagram-section a:hover {
+      transform: scale(1.05);
+    }
+
+    /* Newsletter Section */
+    .newsletter-section {
+      padding: 120px 0;
+      text-align: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg') no-repeat center center/cover;
+      color: #ffffff;
+    }
+    .newsletter-section h2 {
+      font-size: 48px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .newsletter-section h2.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .newsletter-section h2 i {
+      color: #ffffff;
+      margin-right: 10px;
+    }
+    .newsletter-section p {
+      font-size: 18px;
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .newsletter-section p.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .newsletter-form {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .newsletter-form.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .newsletter-form input {
+      padding: 15px 20px;
+      border-radius: 25px;
+      border: none;
+      font-size: 16px;
+      width: 100%;
+      max-width: 400px;
+    }
+    .newsletter-form button {
+      padding: 15px 30px;
+      border-radius: 25px;
+      border: none;
+      background: linear-gradient(135deg, #e53e3e 0%, #ff7878 100%);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .newsletter-form button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(229, 62, 62, 0.3);
+    }
+
+    /* Floating Shop Button */
+    .floating-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      padding: 15px 30px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #e53e3e 0%, #ff7878 100%);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(229, 62, 62, 0.3);
+      animation: bounce 2s infinite;
+      z-index: 50;
+    }
+    .floating-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(229, 62, 62, 0.5);
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-10px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+
+    /* Footer Styles */
+    footer {
+      background: linear-gradient(135deg, #333333 0%, #4a4a4a 100%);
+      color: #ffffff;
+      padding: 50px 0;
+    }
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    .footer-section h4 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    .footer-section ul {
+      list-style: none;
+    }
+    .footer-section ul li {
+      margin-bottom: 12px;
+    }
+    .footer-section ul li a {
+      color: #cccccc;
+      text-decoration: none;
+      font-weight: 300;
+      transition: color 0.3s ease;
+    }
+    .footer-section ul li a:hover {
+      color: #ffffff;
+    }
+    .footer-section p {
+      font-size: 14px;
+      color: #cccccc;
+      margin-bottom: 12px;
+      font-weight: 300;
+    }
+    .footer-section p a {
+      color: #e53e3e;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-section p a:hover {
+      color: #ff7878;
+    }
+    footer .copyright {
+      text-align: center;
+      font-size: 14px;
+      padding-top: 20px;
+      border-top: 1px solid #555555;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-section {
+        height: 80vh;
+      }
+      .hero-content h1 {
+        font-size: 48px;
+      }
+      .hero-content p {
+        font-size: 18px;
+      }
+      .featured-section h2,
+      .products-section h2,
+      .story-section h2,
+      .reviews-section h2,
+      .style-guide-section h2,
+      .instagram-section h2,
+      .newsletter-section h2 {
+        font-size: 36px;
+      }
+      .featured-card img,
+      .style-card img {
+        height: 300px;
+      }
+      .carousel-item {
+        min-width: 50%;
+      }
+      .story-content {
+        flex-direction: column;
+        gap: 30px;
+      }
+      .instagram-post img {
+        height: 200px;
+      }
+      .newsletter-form {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .newsletter-form input,
+      .newsletter-form button {
+        width: 100%;
+        max-width: 100%;
+      }
+      .floating-btn {
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-section {
+        height: 70vh;
+      }
+      .hero-content h1 {
+        font-size: 36px;
+      }
+      .hero-content p {
+        font-size: 16px;
+      }
+      .featured-section h2,
+      .products-section h2,
+      .story-section h2,
+      .reviews-section h2,
+      .style-guide-section h2,
+      .instagram-section h2,
+      .newsletter-section h2 {
+        font-size: 28px;
+      }
+      .featured-card img,
+      .style-card img {
+        height: 250px;
+      }
+      .carousel-item {
+        min-width: 100%;
+      }
+      .instagram-post img {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <img src="assets/images/pius-trex-logo.png" alt="Pius Trex Shoes Logo - A circular emblem with a stylized shoe and dinosaur footprint">
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="size-guide.html">Size Guide</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <video autoplay muted loop>
+      <source src="https://assets.mixkit.co/videos/preview/mixkit-close-up-of-sneakers-on-a-white-background-43281-large.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Step Into Style</h1>
+      <p>Discover the perfect blend of comfort and fashion with Pius Trex Shoes. Explore our latest collection today!</p>
+      <a href="shop.html">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- Featured Collection Section -->
+  <section class="featured-section">
+    <div class="container">
+      <h2 class="visible"><i class="fas fa-star"></i> Featured Collection</h2>
+      <div class="divider"></div>
+      <div class="featured-grid">
+        <div class="featured-card">
+          <img src="https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg" alt="Men's Sneakers">
+          <div class="overlay">
+            <h3>Men's Sneakers</h3>
+            <a href="shop.html">Shop Now</a>
+          </div>
+        </div>
+        <div class="featured-card">
+          <img src="https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg" alt="Women's Boots">
+          <div class="overlay">
+            <h3>Women's Boots</h3>
+            <a href="shop.html">Shop Now</a>
+          </div>
+        </div>
+        <div class="featured-card">
+          <img src="https://images.pexels.com/photos/1598509/pexels-photo-1598509.jpeg" alt="Kids' Shoes">
+          <div class="overlay">
+            <h3>Kids' Shoes</h3>
+            <a href="shop.html">Shop Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Carousel Section -->
+  <section class="products-section">
+    <div class="container">
+      <h2 class="visible"><i class="fas fa-shoe-prints"></i> Our Best Sellers</h2>
+      <div class="divider"></div>
+      <div class="carousel">
+        <div class="carousel-track">
+          <div class="carousel-item">
+            <div class="carousel-card">
+              <img src="https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg" alt="Classic Sneaker">
+              <h3>Classic Sneaker</h3>
+              <p>$59.99</p>
+              <a href="shop.html">View Details</a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="carousel-card">
+              <img src="https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg" alt="Leather Boot">
+              <h3>Leather Boot</h3>
+              <p>$89.99</p>
+              <a href="shop.html">View Details</a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="carousel-card">
+              <img src="https://images.pexels.com/photos/1598509/pexels-photo-1598509.jpeg" alt="Kids' Runner">
+              <h3>Kids' Runner</h3>
+              <p>$39.99</p>
+              <a href="shop.html">View Details</a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="carousel-card">
+              <img src="https://images.pexels.com/photos/292999/pexels-photo-292999.jpeg" alt="Sporty Sneaker">
+              <h3>Sporty Sneaker</h3>
+              <p>$69.99</p>
+              <a href="shop.html">View Details</a>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Story Section -->
+  <section class="story-section">
+    <div class="container">
+      <h2 class="visible"><i class="fas fa-book"></i> Our Story</h2>
+      <div class="divider"></div>
+      <div class="story-content">
+        <div class="story-text">
+          <p>Pius Trex Shoes was born out of a passion for combining style and comfort. Founded in 2015 in Kampala, Uganda, we set out to create footwear that not only looks good but feels amazing with every step. Our designs are inspired by the vibrant energy of our community and the timeless beauty of nature.</p>
+          <p>We believe in quality craftsmanship and sustainable practices, ensuring every pair of shoes tells a story of care and creativity. Join us on this journey to step into a world of style!</p>
+          <a href="about.html">Learn More</a>
+        </div>
+        <div class="story-image">
+          <img src="https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg" alt="Pius Trex Shoes Story">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Reviews Section -->
+  <section class="reviews-section">
+    <div class="container">
+      <h2 class="visible"><i class="fas fa-users"></i> What Our Customers Say</h2>
+      <div class="divider"></div>
+      <div class="reviews-carousel">
+        <div class="reviews-track">
+          <div class="review-item">
+            <div class="review-card">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p>"Absolutely love my new sneakers! They’re so comfortable and stylish. Pius Trex never disappoints!"</p>
+              <span>— Emily R.</span>
+            </div>
+          </div>
+          <div class="review-item">
+            <div class="review-card">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+              </div>
+              <p>"The quality of these boots is amazing. They fit perfectly, thanks to the size guide!"</p>
+              <span>— James K.</span>
+            </div>
+          </div>
+          <div class="review-item">
+            <div class="review-card">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p>"My kids love their new shoes! They’re durable and super cute."</p>
+              <span>— Sarah M.</span>
+            </div>
+          </div>
+        </div>
+        <button class="reviews-btn prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="reviews-btn next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Style Guide Section -->
+  <section class="style-guide-section">
+    <div class="container">
+      <h2 class="visible"><i class="fas fa-palette"></i> Style Guide</h2>
+      <div class="divider"></div>
+      <div class="style-grid">
+        <div class="style-card">
+          <img src="https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg" alt="Casual Look">
+          <div class="overlay">
+            <h3>Casual Look</h3>
+            <p>Pair our classic sneakers with jeans and a graphic tee for an effortless everyday style.</p>
+          </div>
+        </div>
+        <div class="style-card">
+          <img src="https://images.pexels.com/photos/292999/pexels-photo-292999.jpeg" alt="Sporty Vibe">
+          <div class="overlay">
+            <h3>Sporty Vibe</h3>
+            <p>Rock our sporty sneakers with athleisure wear for a comfortable, on-the-go look.</p>
+          </div>
+        </div>
+        <div class="style-card">
+          <img src="https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg" alt="Formal Elegance">
+          <div class="overlay">
+            <h3>Formal Elegance</h3>
+            <p>Elevate your outfit with our leather boots, perfect for a polished, professional appearance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram Feed Section -->
+  <section class="instagram-section">
+    <div class="container">
+      <h2 class="visible"><i class="fab fa-instagram"></i> Join the Community</h2>
+      <div class="divider"></div>
+      <div class="instagram-grid">
+        <div class="instagram-post">
+          <img src="https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg" alt="Instagram Post 1">
+          <div class="overlay">
+            <i class="fab fa-instagram"></i>
+          </div>
+        </div>
+        <div class="instagram-post">
+          <img src="https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg" alt="Instagram Post 2">
+          <div class="overlay">
+            <i class="fab fa-instagram"></i>
+          </div>
+        </div>
+        <div class="instagram-post">
+          <img src="https://images.pexels.com/photos/1598509/pexels-photo-1598509.jpeg" alt="Instagram Post 3">
+          <div class="overlay">
+            <i class="fab fa-instagram"></i>
+          </div>
+        </div>
+        <div class="instagram-post">
+          <img src="https://images.pexels.com/photos/292999/pexels-photo-292999.jpeg" alt="Instagram Post 4">
+          <div class="overlay">
+            <i class="fab fa-instagram"></i>
+          </div>
+        </div>
+        <div class="instagram-post">
+          <img src="https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg" alt="Instagram Post 5">
+          <div class="overlay">
+            <i class="fab fa-instagram"></i>
+          </div>
+        </div>
+      </div>
+      <a href="https://www.instagram.com" target="_blank">Follow Us on Instagram</a>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter-section">
+    <div class="container">
+      <h2 class="visible"><i class="fas fa-envelope"></i> Stay in the Loop</h2>
+      <div class="divider"></div>
+      <p class="visible">Subscribe to our newsletter for the latest updates, exclusive offers, and style tips.</p>
+      <div class="newsletter-form visible">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="button">Subscribe</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Shop Button -->
+  <a href="shop.html" class="floating-btn">Shop Now</a>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <!-- Quick Links -->
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="size-guide.html">Size Guide</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <!-- Contact Info -->
+        <div class="footer-section">
+          <h4>Contact Us</h4>
+          <p>Email: <a href="mailto:trexpius4@gmail.com">trexpius4@gmail.com</a></p>
+          <p>Phone: <a href="tel:+256748455425">+256 748455425</a></p>
+          <p>WhatsApp: <a href="https://wa.me/256762361467" target="_blank">+256 762361467</a></p>
+          <p>Address: Namugongo, Kampala, Uganda</p>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© 2025 Pius Trex Shoes. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header Scroll Effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Scroll-triggered Animations
+    const elements = document.querySelectorAll('.hero-section, .featured-section, .products-section, .story-section, .reviews-section, .style-guide-section, .instagram-section, .newsletter-section, .carousel-item, .featured-card, .review-item, .style-card, .instagram-post, h2, p, .newsletter-form, .story-text, .story-image');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    elements.forEach(element => observer.observe(element));
+
+    // Product Carousel Functionality
+    const productTrack = document.querySelector('.carousel-track');
+    const productItems = document.querySelectorAll('.carousel-item');
+    const productPrevBtn = document.querySelector('.carousel-btn.prev');
+    const productNextBtn = document.querySelector('.carousel-btn.next');
+    let productIndex = 0;
+
+    function updateProductCarousel() {
+      const itemWidth = productItems[0].offsetWidth;
+      productTrack.style.transform = `translateX(-${productIndex * itemWidth}px)`;
+    }
+
+    productNextBtn.addEventListener('click', () => {
+      if (productIndex < productItems.length - 3) {
+        productIndex++;
+      } else {
+        productIndex = 0;
+      }
+      updateProductCarousel();
+    });
+
+    productPrevBtn.addEventListener('click', () => {
+      if (productIndex > 0) {
+        productIndex--;
+      } else {
+        productIndex = productItems.length - 3;
+      }
+      updateProductCarousel();
+    });
+
+    window.addEventListener('resize', updateProductCarousel);
+
+    // Reviews Carousel Functionality
+    const reviewsTrack = document.querySelector('.reviews-track');
+    const reviewsItems = document.querySelectorAll('.review-item');
+    const reviewsPrevBtn = document.querySelector('.reviews-btn.prev');
+    const reviewsNextBtn = document.querySelector('.reviews-btn.next');
+    let reviewsIndex = 0;
+
+    function updateReviewsCarousel() {
+      const itemWidth = reviewsItems[0].offsetWidth;
+      reviewsTrack.style.transform = `translateX(-${reviewsIndex * itemWidth}px)`;
+    }
+
+    reviewsNextBtn.addEventListener('click', () => {
+      if (reviewsIndex < reviewsItems.length - 1) {
+        reviewsIndex++;
+      } else {
+        reviewsIndex = 0;
+      }
+      updateReviewsCarousel();
+    });
+
+    reviewsPrevBtn.addEventListener('click', () => {
+      if (reviewsIndex > 0) {
+        reviewsIndex--;
+      } else {
+        reviewsIndex = reviewsItems.length - 1;
+      }
+      updateReviewsCarousel();
+    });
+
+    window.addEventListener('resize', updateReviewsCarousel);
+
+    // Newsletter Form Submission Animation
+    const newsletterBtn = document.querySelector('.newsletter-form button');
+    newsletterBtn.addEventListener('click', () => {
+      const input = document.querySelector('.newsletter-form input');
+      if (input.value) {
+        newsletterBtn.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
+        newsletterBtn.style.background = '#28a745';
+        setTimeout(() => {
+          newsletterBtn.innerHTML = 'Subscribe';
+          newsletterBtn.style.background = 'linear-gradient(135deg, #e53e3e 0%, #ff7878 100%)';
+          input.value = '';
+        }, 2000);
+      }
+    });
+  </script>
+</body>
+</html>

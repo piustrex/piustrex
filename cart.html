@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Shopping Cart - Pius Trex Shoes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333333;
+      line-height: 1.8;
+      background: linear-gradient(135deg, #f9ecec 0%, #ffffff 100%);
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
+
+    .divider {
+      width: 120px;
+      height: 4px;
+      background: linear-gradient(to right, #d32f2f, #ff5252);
+      border-radius: 2px;
+      margin: 20px auto;
+      position: relative;
+    }
+    .divider::after {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      background: #FFD700;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.2); }
+      100% { transform: translateX(-50%) scale(1); }
+    }
+
+    header {
+      background: #ffffff;
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      transition: padding 0.3s ease, box-shadow 0.3s ease;
+    }
+    header.scrolled {
+      padding: 10px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo img {
+      width: 60px;
+      height: 60px;
+      transition: transform 0.3s ease;
+    }
+    .logo img:hover {
+      transform: rotate(10deg) scale(1.1);
+    }
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+    nav ul li a {
+      color: #333333;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 10px 15px;
+      border-radius: 25px;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+    nav ul li a:hover {
+      background: linear-gradient(135deg, #d32f2f 0%, #ff5252 100%);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+    nav ul li a.active {
+      background: linear-gradient(135deg, #d32f2f 0%, #ff5252 100%);
+      color: #ffffff;
+    }
+
+    .hero-section {
+      position: relative;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg') no-repeat center center/cover;
+      margin-top: 80px;
+    }
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #FFD700;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .hero-content.visible h1 {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hero-content p {
+      font-size: 20px;
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+    }
+    .hero-content.visible p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .progress-tracker {
+      padding: 20px 0;
+      background: #fafafa;
+      text-align: center;
+    }
+    .progress-steps {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      list-style: none;
+    }
+    .progress-step {
+      font-size: 16px;
+      font-weight: 600;
+      color: #999999;
+      position: relative;
+    }
+    .progress-step a {
+      color: #999999;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .progress-step:not(.active) a:hover {
+      color: #d32f2f;
+    }
+    .progress-step.active {
+      color: #d32f2f;
+    }
+    .progress-step.active a {
+      color: #d32f2f;
+      cursor: default;
+    }
+    .progress-step::after {
+      content: '>';
+      position: absolute;
+      right: -20px;
+      color: #999999;
+    }
+    .progress-step:last-child::after {
+      content: none;
+    }
+
+    .cart-section {
+      padding: 80px 0;
+      background: #ffffff url('https://www.transparenttextures.com/patterns/asfalt-dark.png') repeat;
+    }
+    .cart-container {
+      display: flex;
+      gap: 30px;
+    }
+    .cart-items {
+      width: 70%;
+    }
+    .cart-items h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #333333;
+    }
+    .cart-table {
+      background: #fafafa;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    .cart-table-header {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr 1fr 1fr 0.5fr;
+      padding: 15px 0;
+      border-bottom: 1px solid #cccccc;
+      font-weight: 600;
+      color: #d32f2f;
+    }
+    .cart-item {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr 1fr 1fr 0.5fr;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid #e0e0e0;
+      transition: background 0.3s ease;
+    }
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+    .cart-item:hover {
+      background: #f5f5f5;
+    }
+    .cart-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .cart-item .product-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333333;
+    }
+    .cart-item .size {
+      font-size: 14px;
+      color: #555555;
+    }
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .quantity-selector button {
+      width: 30px;
+      height: 30px;
+      border: none;
+      background: linear-gradient(135deg, #d32f2f 0%, #ff5252 100%);
+      color: #ffffff;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .quantity-selector button:hover {
+      background: linear-gradient(135deg, #e53935 0%, #ff6f61 100%);
+    }
+    .quantity-selector input {
+      width: 40px;
+      text-align: center;
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    .cart-item .price {
+      font-size: 16px;
+      font-weight: 500;
+      color: #333333;
+    }
+    .cart-item .remove-btn {
+      background: none;
+      border: none;
+      color: #d32f2f;
+      font-size: 18px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    .cart-item .remove-btn:hover {
+      color: #ff5252;
+    }
+
+    .empty-cart {
+      text-align: center;
+      padding: 50px 0;
+    }
+    .empty-cart h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #333333;
+    }
+    .empty-cart p {
+      font-size: 16px;
+      color: #555555;
+      margin-bottom: 20px;
+    }
+    .empty-cart .shop-now-btn {
+      padding: 12px 40px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #d32f2f 0%, #ff5252 100%);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .empty-cart .shop-now-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(211, 47, 47, 0.5);
+    }
+
+    .order-summary {
+      width: 30%;
+      background: #fafafa;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    .order-summary h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #d32f2f;
+    }
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    .summary-item.total {
+      font-weight: 600;
+      color: #333333;
+      border-top: 1px solid #cccccc;
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+    .shipping-methods {
+      margin: 20px 0;
+    }
+    .shipping-methods h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333333;
+      margin-bottom: 10px;
+    }
+    .shipping-option {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+    .shipping-option:hover {
+      border-color: #d32f2f;
+      background: #f5f5f5;
+    }
+    .shipping-option input {
+      margin-right: 10px;
+    }
+    .shipping-option label {
+      font-size: 14px;
+      color: #333333;
+      cursor: pointer;
+    }
+    .shipping-option input:checked + label {
+      color: #d32f2f;
+      font-weight: 600;
+    }
+    .promo-code {
+      margin: 20px 0;
+    }
+    .promo-code input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    .promo-code button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background: linear-gradient(135deg, #d32f2f 0%, #ff5252 100%);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .promo-code button:hover {
+      background: linear-gradient(135deg, #e53935 0%, #ff6f61 100%);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(211, 47, 47, 0.5);
+    }
+    .promo-message {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #28a745;
+      display: none;
+    }
+    .payment-methods {
+      margin: 20px 0;
+    }
+    .payment-methods h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333333;
+      margin-bottom: 10px;
+    }
+    .payment-option {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+    .payment-option:hover {
+      border-color: #d32f2f;
+      background: #f5f5f5;
+    }
+    .payment-option input {
+      margin-right: 10px;
+    }
+    .payment-option label {
+      font-size: 14px;
+      color: #333333;
+      cursor: pointer;
+    }
+    .payment-option input:checked + label {
+      color: #d32f2f;
+      font-weight: 600;
+    }
+    .summary-item.payment {
+      font-size: 14px;
+      color: #555555;
+    }
+    .trust-badges {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 14px;
+      color: #555555;
+    }
+    .trust-badge i {
+      color: #FFD700;
+    }
+    .checkout-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #d32f2f 0%, #ff5252 100%);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .checkout-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(211, 47, 47, 0.5);
+    }
+    .continue-shopping {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #d32f2f;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+    .continue-shopping:hover {
+      color: #ff5252;
+    }
+
+    .delivery-info-section {
+      padding: 80px 0;
+      background: #1a1a1a url('https://www.transparenttextures.com/patterns/asfalt-dark.png') repeat;
+      color: #ffffff;
+      text-align: center;
+    }
+    .delivery-info-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #FFD700;
+    }
+    .delivery-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 20px 0;
+    }
+    .info-card {
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .info-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .info-card i {
+      font-size: 30px;
+      color: #FFD700;
+      margin-bottom: 10px;
+    }
+    .info-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .info-card p {
+      font-size: 14px;
+      font-weight: 300;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #d32f2f 0%, #ff5252 100%);
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 50;
+    }
+    .scroll-to-top.visible {
+      opacity: 1;
+    }
+    .scroll-to-top:hover {
+      transform: scale(1.1);
+    }
+
+    footer {
+      background: linear-gradient(135deg, #333333 0%, #4a4a4a 100%);
+      color: #ffffff;
+      padding: 50px 0;
+    }
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    .footer-section h4 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    .footer-section ul {
+      list-style: none;
+    }
+    .footer-section ul li {
+      margin-bottom: 12px;
+    }
+    .footer-section ul li a {
+      color: #cccccc;
+      text-decoration: none;
+      font-weight: 300;
+      transition: color 0.3s ease;
+    }
+    .footer-section ul li a:hover {
+      color: #ffffff;
+    }
+    .footer-section p {
+      font-size: 14px;
+      color: #cccccc;
+      margin-bottom: 12px;
+      font-weight: 300;
+    }
+    .footer-section p a {
+      color: #d32f2f;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-section p a:hover {
+      color: #ff5252;
+    }
+    footer .copyright {
+      text-align: center;
+      font-size: 14px;
+      padding-top: 20px;
+      border-top: 1px solid #555555;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        height: 50vh;
+      }
+      .hero-content h1 {
+        font-size: 40px;
+      }
+      .hero-content p {
+        font-size: 16px;
+      }
+      .cart-container {
+        flex-direction: column;
+      }
+      .cart-items,
+      .order-summary {
+        width: 100%;
+      }
+      .cart-table-header,
+      .cart-item {
+        grid-template-columns: 1fr 2fr 1fr 1fr;
+        gap: 10px;
+      }
+      .cart-table-header div:nth-child(5),
+      .cart-item div:nth-child(5) {
+        display: none;
+      }
+      .cart-item img {
+        width: 60px;
+        height: 60px;
+      }
+      .scroll-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+      .progress-steps {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .progress-step::after {
+        content: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-section {
+        height: 40vh;
+      }
+      .hero-content h1 {
+        font-size: 32px;
+      }
+      .hero-content p {
+        font-size: 14px;
+      }
+      .cart-table-header,
+      .cart-item {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .cart-table-header div:nth-child(3),
+      .cart-item div:nth-child(3) {
+        display: none;
+      }
+      .cart-item img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <img src="assets/images/pius-trex-logo.png" alt="Pius Trex Shoes Logo - A circular emblem with a stylized shoe and dinosaur footprint" onerror="this.src='https://via.placeholder.com/60?text=Logo';">
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="size-guide.html">Size Guide</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="visible">Your Shopping Cart</h1>
+      <p class="visible">Review your items and proceed to checkout.</p>
+    </div>
+  </section>
+
+  <section class="progress-tracker">
+    <div class="container">
+      <ul class="progress-steps">
+        <li class="progress-step"><a href="cart.html">Cart</a></li>
+        <li class="progress-step"><a href="shipping.html" onclick="return false;">Shipping</a></li>
+        <li class="progress-step"><a href="payment.html" onclick="return false;">Payment</a></li>
+        <li class="progress-step"><a href="confirmation.html" onclick="return false;">Confirmation</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cart-section">
+    <div class="container">
+      <div class="cart-container">
+        <div class="cart-items">
+          <h2>Your Items</h2>
+          <div class="cart-table" id="cart-table">
+            <div class="cart-table-header">
+              <div>Image</div>
+              <div>Product</div>
+              <div>Size</div>
+              <div>Quantity</div>
+              <div>Price</div>
+              <div></div>
+            </div>
+            <div class="cart-item" data-price-usd="80" data-price-ugx="293178">
+              <div><img src="https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg" alt="Men's Classic Sneaker"></div>
+              <div class="product-name">Men's Classic Sneaker</div>
+              <div class="size">8</div>
+              <div class="quantity-selector">
+                <button onclick="updateQuantity(this, -1)">-</button>
+                <input type="text" value="1" readonly>
+                <button onclick="updateQuantity(this, 1)">+</button>
+              </div>
+              <div class="price">$80 | UGX 293,178</div>
+              <div><button class="remove-btn" onclick="removeItem(this)"><i class="fas fa-trash"></i></button></div>
+            </div>
+            <div class="cart-item" data-price-usd="120" data-price-ugx="439767">
+              <div><img src="https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg" alt="Women's Running Shoes"></div>
+              <div class="product-name">Women's Running Shoes</div>
+              <div class="size">7</div>
+              <div class="quantity-selector">
+                <button onclick="updateQuantity(this, -1)">-</button>
+                <input type="text" value="1" readonly>
+                <button onclick="updateQuantity(this, 1)">+</button>
+              </div>
+              <div class="price">$120 | UGX 439,767</div>
+              <div><button class="remove-btn" onclick="removeItem(this)"><i class="fas fa-trash"></i></button></div>
+            </div>
+          </div>
+          <div class="empty-cart" id="empty-cart" style="display: none;">
+            <h3>Your Cart is Empty</h3>
+            <p>Looks like you haven't added any items yet. Start shopping now!</p>
+            <a href="shop.html" class="shop-now-btn">Shop Now</a>
+          </div>
+        </div>
+
+        <div class="order-summary">
+          <h3>Order Summary</h3>
+          <div class="summary-item">
+            <span>Subtotal</span>
+            <span id="subtotal">$200 | UGX 732,945</span>
+          </div>
+          <div class="summary-item">
+            <span>Shipping</span>
+            <span id="shipping">$10 | UGX 36,647</span>
+          </div>
+          <div class="summary-item">
+            <span>Payment Method</span>
+            <span id="payment-method">Not Selected</span>
+          </div>
+          <div class="summary-item total">
+            <span>Total</span>
+            <span id="total">$210 | UGX 769,592</span>
+          </div>
+          <div class="shipping-methods">
+            <h4>Select Shipping Method</h4>
+            <div class="shipping-option">
+              <input type="radio" id="standard" name="shipping-method" value="standard" checked onchange="updateShippingMethod(this)">
+              <label for="standard">Standard Shipping (Free over $100, else $10)</label>
+            </div>
+            <div class="shipping-option">
+              <input type="radio" id="door-to-door" name="shipping-method" value="door-to-door" onchange="updateShippingMethod(this)">
+              <label for="door-to-door">Door-to-Door Delivery ($15)</label>
+            </div>
+          </div>
+          <div class="promo-code">
+            <input type="text" placeholder="Enter Promo Code">
+            <button onclick="applyPromo()">Apply</button>
+            <div class="promo-message" id="promo-message">Promo code applied! 10% off.</div>
+          </div>
+          <div class="payment-methods">
+            <h4>Select Payment Method</h4>
+            <div class="payment-option">
+              <input type="radio" id="momo" name="payment-method" value="Mobile Money (MTN MoMo)" onchange="updatePaymentMethod(this)">
+              <label for="momo">Mobile Money (MTN MoMo)</label>
+            </div>
+            <div class="payment-option">
+              <input type="radio" id="airtel" name="payment-method" value="Mobile Money (Airtel Money)" onchange="updatePaymentMethod(this)">
+              <label for="airtel">Mobile Money (Airtel Money)</label>
+            </div>
+            <div class="payment-option">
+              <input type="radio" id="card" name="payment-method" value="Bank Card (Visa/Mastercard)" onchange="updatePaymentMethod(this)">
+              <label for="card">Bank Card (Visa/Mastercard)</label>
+            </div>
+            <div class="payment-option">
+              <input type="radio" id="cod" name="payment-method" value="Cash on Delivery" onchange="updatePaymentMethod(this)">
+              <label for="cod">Cash on Delivery</label>
+            </div>
+          </div>
+          <button class="checkout-btn" onclick="proceedToShipping()">Proceed to Shipping</button>
+          <a href="shop.html" class="continue-shopping">Continue Shopping</a>
+          <div class="trust-badges">
+            <div class="trust-badge"><i class="fas fa-lock"></i> Secure Payments</div>
+            <div class="trust-badge"><i class="fas fa-undo"></i> Free Returns</div>
+            <div class="trust-badge"><i class="fas fa-truck"></i> Fast Delivery</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="delivery-info-section">
+    <div class="container">
+      <h2>Delivery Information</h2>
+      <div class="divider"></div>
+      <div class="delivery-info-grid">
+        <div class="info-card">
+          <i class="fas fa-truck"></i>
+          <h3>Standard Shipping</h3>
+          <p>Free for orders over $100, otherwise $10. Estimated delivery within 5-7 business days across Uganda.</p>
+        </div>
+        <div class="info-card">
+          <i class="fas fa-home"></i>
+          <h3>Door-to-Door Delivery</h3>
+          <p>Flat rate of $15. Your order is delivered directly to your address within 2-3 business days in Kampala.</p>
+        </div>
+        <div class="info-card">
+          <i class="fas fa-info-circle"></i>
+          <h3>Delivery Policy</h3>
+          <p>We ensure safe delivery with tracking. Contact us if your order is delayed beyond the estimated time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="scroll-to-top">
+    <i class="fas fa-chevron-up"></i>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="size-guide.html">Size Guide</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact Us</h4>
+          <p>Email: <a href="mailto:trexpius4@gmail.com">trexpius4@gmail.com</a></p>
+          <p>Phone: <a href="tel:+256762361467">+256 762 361 467</a></p>
+          <p>WhatsApp: <a href="https://wa.me/256748453425" target="_blank">+256 748 453 425</a></p>
+          <p>Address: Namugongo, Kampala, Uganda</p>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© 2025 Pius Trex Shoes. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const steps = document.querySelectorAll('.progress-step');
+      steps.forEach(step => {
+        if (step.querySelector('a').href.includes('cart.html')) {
+          step.classList.add('active');
+        }
+      });
+
+      const navLinks = document.querySelectorAll('nav ul li a');
+      navLinks.forEach(link => {
+        if (link.href.includes('cart.html')) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      const scrollToTop = document.querySelector('.scroll-to-top');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+        scrollToTop.classList.add('visible');
+      } else {
+        header.classList.remove('scrolled');
+        scrollToTop.classList.remove('visible');
+      }
+    });
+
+    const elements = document.querySelectorAll('.hero-section, h2, p');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    elements.forEach(element => observer.observe(element));
+
+    document.querySelector('.scroll-to-top').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    function updateQuantity(button, change) {
+      const selector = button.parentElement;
+      const input = selector.querySelector('input');
+      let quantity = parseInt(input.value);
+      quantity = Math.max(1, quantity + change);
+      input.value = quantity;
+      updatePrice(selector.parentElement, quantity);
+      updateSummary();
+    }
+
+    function updatePrice(item, quantity) {
+      const priceUsd = parseFloat(item.getAttribute('data-price-usd'));
+      const priceUgx = parseFloat(item.getAttribute('data-price-ugx'));
+      const totalPriceUsd = (priceUsd * quantity).toFixed(2);
+      const totalPriceUgx = Math.round(priceUgx * quantity);
+      item.querySelector('.price').textContent = `$${totalPriceUsd} | UGX ${totalPriceUgx.toLocaleString()}`;
+    }
+
+    function updateSummary() {
+      const items = document.querySelectorAll('.cart-item');
+      let subtotalUsd = 0;
+      let subtotalUgx = 0;
+
+      items.forEach(item => {
+        const quantity = parseInt(item.querySelector('.quantity-selector input').value);
+        const priceUsd = parseFloat(item.getAttribute('data-price-usd'));
+        const priceUgx = parseFloat(item.getAttribute('data-price-ugx'));
+        subtotalUsd += priceUsd * quantity;
+        subtotalUgx += priceUgx * quantity;
+      });
+
+      const shippingMethod = document.querySelector('input[name="shipping-method"]:checked').value;
+      let shippingUsd, shippingUgx;
+      if (shippingMethod === 'standard') {
+        shippingUsd = subtotalUsd > 100 ? 0 : 10;
+        shippingUgx = subtotalUsd > 100 ? 0 : 36647;
+      } else {
+        shippingUsd = 15;
+        shippingUgx = 54970;
+      }
+
+      const totalUsd = subtotalUsd + shippingUsd;
+      const totalUgx = subtotalUgx + shippingUgx;
+
+      document.getElementById('subtotal').textContent = `$${subtotalUsd.toFixed(2)} | UGX ${Math.round(subtotalUgx).toLocaleString()}`;
+      document.getElementById('shipping').textContent = shippingUsd === 0 ? 'Free' : `$${shippingUsd.toFixed(2)} | UGX ${shippingUgx.toLocaleString()}`;
+      document.getElementById('total').textContent = `$${totalUsd.toFixed(2)} | UGX ${Math.round(totalUgx).toLocaleString()}`;
+
+      const cartItems = Array.from(items).map(item => ({
+        image: item.querySelector('img').src,
+        name: item.querySelector('.product-name').textContent,
+        size: item.querySelector('.size').textContent,
+        quantity: parseInt(item.querySelector('.quantity-selector input').value),
+        priceUsd: parseFloat(item.getAttribute('data-price-usd')),
+        priceUgx: parseFloat(item.getAttribute('data-price-ugx'))
+      }));
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      localStorage.setItem('subtotal', JSON.stringify({ usd: subtotalUsd, ugx: subtotalUgx }));
+      localStorage.setItem('shipping', JSON.stringify({ method: shippingMethod, usd: shippingUsd, ugx: shippingUgx }));
+      localStorage.setItem('total', JSON.stringify({ usd: totalUsd, ugx: totalUgx }));
+    }
+
+    function updateShippingMethod(radio) {
+      updateSummary();
+    }
+
+    function updatePaymentMethod(radio) {
+      const paymentMethodSpan = document.getElementById('payment-method');
+      paymentMethodSpan.textContent = radio.value;
+      localStorage.setItem('paymentMethod', radio.value);
+    }
+
+    function removeItem(button) {
+      const item = button.parentElement.parentElement;
+      item.remove();
+      updateSummary();
+      checkEmptyCart();
+    }
+
+    function checkEmptyCart() {
+      const cartTable = document.getElementById('cart-table');
+      const emptyCart = document.getElementById('empty-cart');
+      const items = cartTable.querySelectorAll('.cart-item');
+      if (items.length === 0) {
+        cartTable.style.display = 'none';
+        emptyCart.style.display = 'block';
+      }
+    }
+
+    function applyPromo() {
+      const promoMessage = document.getElementById('promo-message');
+      promoMessage.style.display = 'block';
+      setTimeout(() => {
+        promoMessage.style.display = 'none';
+      }, 3000);
+    }
+
+    function proceedToShipping() {
+      const paymentMethod = document.getElementById('payment-method').textContent;
+      if (paymentMethod === 'Not Selected') {
+        alert('Please select a payment method before proceeding.');
+        return;
+      }
+      updateSummary();
+      window.location.href = 'shipping.html';
+    }
+  </script>
+</body>
+</html>

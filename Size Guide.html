@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Size Guide - Pius Trex Shoes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333333;
+      line-height: 1.8;
+      background: linear-gradient(135deg, #f9ecec 0%, #ffffff 100%);
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
+
+    /* Decorative Divider */
+    .divider {
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(to right, #e53e3e, #ff7878);
+      border-radius: 2px;
+      margin: 20px auto;
+    }
+
+    /* Header Styles */
+    header {
+      background: #ffffff;
+      padding: 20px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 50;
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo img {
+      width: 60px;
+      height: 60px;
+      transition: transform 0.3s ease;
+    }
+    .logo img:hover {
+      transform: rotate(10deg) scale(1.1);
+    }
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+    nav ul li a {
+      color: #333333;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 10px 15px;
+      border-radius: 25px;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+    nav ul li a:hover {
+      background: linear-gradient(135deg, #e53e3e 0%, #ff7878 100%);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+    nav ul li a.active {
+      background: linear-gradient(135deg, #e53e3e 0%, #ff7878 100%);
+      color: #ffffff;
+    }
+
+    /* Size Guide Hero Section */
+    .size-hero-section {
+      position: relative;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.pexels.com/photos/292999/pexels-photo-292999.jpeg') no-repeat center center/cover;
+      color: #ffffff;
+      margin-bottom: 80px;
+    }
+    .size-hero-content h1 {
+      font-size: 60px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .size-hero-content.visible h1 {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .size-hero-content p {
+      font-size: 22px;
+      font-weight: 300;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+    }
+    .size-hero-content.visible p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .size-hero-content a {
+      padding: 15px 40px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #e53e3e 0%, #ff7878 100%);
+      color: #ffffff;
+      box-shadow: 0 5px 15px rgba(229, 62, 62, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .size-hero-content a:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(229, 62, 62, 0.5);
+    }
+
+    /* How to Measure Section */
+    .measure-section {
+      padding: 100px 0;
+      background: #ffffff url('https://www.transparenttextures.com/patterns/asfalt-dark.png') repeat;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 80px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .measure-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .measure-content {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .measure-content img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 15px;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .measure-content img.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .measure-text {
+      text-align: left;
+    }
+    .measure-text h2 {
+      font-size: 40px;
+      font-weight: 600;
+      margin-bottom: 30px;
+      color: #333333;
+      position: relative;
+      display: inline-block;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .measure-text h2.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .measure-text h2 i {
+      color: #e53e3e;
+      margin-right: 10px;
+    }
+    .measure-text ol {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 20px;
+    }
+    .measure-text ol li {
+      font-size: 16px;
+      font-weight: 300;
+      color: #555555;
+      margin-bottom: 20px;
+      position: relative;
+      padding-left: 40px;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+    .measure-text ol li.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .measure-text ol li::before {
+      content: counter(step);
+      counter-increment: step;
+      position: absolute;
+      left: 0;
+      width: 24px;
+      height: 24px;
+      background: linear-gradient(135deg, #e53e3e 0%, #ff7878 100%);
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .measure-text ol {
+      counter-reset: step;
+    }
+
+    /* Size Chart Section */
+    .size-chart-section {
+      padding: 100px 0;
+      text-align: center;
+      background: #ffffff url('https://www.transparenttextures.com/patterns/asfalt-dark.png') repeat;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 80px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .size-chart-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .size-chart-section h2 {
+      font-size: 40px;
+      font-weight: 600;
+      margin-bottom: 40px;
+      color: #333333;
+      position: relative;
+      display: inline-block;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .size-chart-section h2.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .size-chart-section h2 i {
+      color: #e53e3e;
+      margin-right: 10px;
+    }
+    .size-chart-section .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .size-chart-section .tab {
+      padding: 12px 25px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #333333;
+      background: #f0f0f0;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .size-chart-section .tab:hover {
+      background: linear-gradient(135deg, #e53e3e 0%, #ff7878 100%);
+      color: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(229, 62, 62, 0.3);
+    }
+    .size-chart-section .tab.active {
+      background: linear-gradient(135deg, #e53e3e 0%, #ff7878 100%);
+      color: #ffffff;
+      box-shadow: 0 5px 15px rgba(229, 62, 62, 0.3);
+    }
+    .size-chart-section .tab-content {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .size-chart-section .tab-content.active {
+      display: block;
+      opacity: 1;
+    }
+    .size-chart-section table {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background: #fafafa;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    .size-chart-section th,
+    .size-chart-section td {
+      padding: 15px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 300;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .size-chart-section th {
+      background: linear-gradient(135deg, #e53e3e 0%, #ff7878 100%);
+      color: #ffffff;
+      font-weight: 600;
+    }
+    .size-chart-section td {
+      color: #555555;
+    }
+    .size-chart-section tr:last-child td {
+      border-bottom: none;
+    }
+    .size-chart-section .note {
+      font-size: 14px;
+      font-style: italic;
+      color: #777777;
+      margin-top: 20px;
+    }
+
+    /* Fit Tips Section */
+    .fit-tips-section {
+      padding: 100px 0;
+      text-align: center;
+      background: #ffffff url('https://www.transparenttextures.com/patterns/asfalt-dark.png') repeat;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 80px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fit-tips-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fit-tips-section h2 {
+      font-size: 40px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #333333;
+      position: relative;
+      display: inline-block;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fit-tips-section h2.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .fit-tips-section h2 i {
+      color: #e53e3e;
+      margin-right: 10px;
+    }
+    .fit-tips-section ul {
+      list-style: none;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .fit-tips-section ul li {
+      font-size: 16px;
+      font-weight: 300;
+      color: #555555;
+      margin-bottom: 20px;
+      position: relative;
+      padding-left: 30px;
+    }
+    .fit-tips-section ul li::before {
+      content: '✔';
+      position: absolute;
+      left: 0;
+      color: #e53e3e;
+      font-size: 18px;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 100px 0;
+      text-align: center;
+      background: #ffffff url('https://www.transparenttextures.com/patterns/asfalt-dark.png') repeat;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 80px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .faq-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .faq-section h2 {
+      font-size: 40px;
+      font-weight: 600;
+      margin-bottom: 40px;
+      color: #333333;
+      position: relative;
+      display: inline-block;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .faq-section h2.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .faq-section h2 i {
+      color: #e53e3e;
+      margin-right: 10px;
+    }
+    .faq-section .faq-item {
+      max-width: 800px;
+      margin: 0 auto 20px;
+      text-align: left;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+    .faq-section .faq-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .faq-section .faq-question {
+      background: #fafafa;
+      padding: 15px 25px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      color: #333333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .faq-section .faq-question:hover {
+      background: #f0f0f0;
+      transform: translateY(-2px);
+    }
+    .faq-section .faq-question::after {
+      content: '+';
+      font-size: 20px;
+      color: #e53e3e;
+    }
+    .faq-section .faq-question.active::after {
+      content: '-';
+    }
+    .faq-section .faq-answer {
+      display: none;
+      padding: 15px 25px;
+      font-size: 14px;
+      font-weight: 300;
+      color: #555555;
+      background: #f5f5f5;
+      border-radius: 0 0 10px 10px;
+    }
+
+    /* Video Tutorial Section */
+    .video-section {
+      padding: 100px 0;
+      text-align: center;
+      background: #ffffff url('https://www.transparenttextures.com/patterns/asfalt-dark.png') repeat;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 80px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .video-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .video-section h2 {
+      font-size: 40px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #333333;
+      position: relative;
+      display: inline-block;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .video-section h2.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .video-section h2 i {
+      color: #e53e3e;
+      margin-right: 10px;
+    }
+    .video-section .video-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .video-section .video-wrapper.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .video-section iframe {
+      width: 100%;
+      height: 450px;
+      border-radius: 15px;
+      border: 3px solid transparent;
+      background: linear-gradient(#ffffff, #ffffff), linear-gradient(135deg, #e53e3e, #ff7878);
+      background-clip: padding-box, border-box;
+    }
+
+    /* Customer Testimonials Section */
+    .testimonials-section {
+      padding: 100px 0;
+      text-align: center;
+      background: #ffffff url('https://www.transparenttextures.com/patterns/asfalt-dark.png') repeat;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 80px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .testimonials-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .testimonials-section h2 {
+      font-size: 40px;
+      font-weight: 600;
+      margin-bottom: 40px;
+      color: #333333;
+      position: relative;
+      display: inline-block;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .testimonials-section h2.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .testimonials-section h2 i {
+      color: #e53e3e;
+      margin-right: 10px;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 0 20px;
+    }
+    .testimonial-card {
+      background: #fafafa;
+      border-radius: 15px;
+      padding: 25px;
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .testimonial-card.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    .testimonial-card p {
+      font-size: 14px;
+      color: #555555;
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+    .testimonial-card span {
+      font-size: 14px;
+      font-weight: 600;
+      color: #e53e3e;
+    }
+
+    /* Contact Support Section */
+    .contact-support-section {
+      padding: 100px 0;
+      text-align: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg') no-repeat center center/cover;
+      color: #ffffff;
+      border-radius: 20px;
+      margin-bottom: 80px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .contact-support-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .contact-support-section h2 {
+      font-size: 40px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .contact-support-section h2.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .contact-support-section h2 i {
+      color: #ffffff;
+      margin-right: 10px;
+    }
+    .contact-support-section p {
+      font-size: 16px;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      font-weight: 300;
+    }
+    .contact-support-section a {
+      padding: 15px 40px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #e53e3e 0%, #ff7878 100%);
+      color: #ffffff;
+      box-shadow: 0 5px 15px rgba(229, 62, 62, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .contact-support-section a:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(229, 62, 62, 0.5);
+    }
+
+    /* Footer Styles */
+    footer {
+      background: linear-gradient(135deg, #333333 0%, #4a4a4a 100%);
+      color: #ffffff;
+      padding: 50px 0;
+    }
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    .footer-section h4 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    .footer-section ul {
+      list-style: none;
+    }
+    .footer-section ul li {
+      margin-bottom: 12px;
+    }
+    .footer-section ul li a {
+      color: #cccccc;
+      text-decoration: none;
+      font-weight: 300;
+      transition: color 0.3s ease;
+    }
+    .footer-section ul li a:hover {
+      color: #ffffff;
+    }
+    .footer-section p {
+      font-size: 14px;
+      color: #cccccc;
+      margin-bottom: 12px;
+      font-weight: 300;
+    }
+    .footer-section p a {
+      color: #e53e3e;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-section p a:hover {
+      color: #ff7878;
+    }
+    footer .copyright {
+      text-align: center;
+      font-size: 14px;
+      padding-top: 20px;
+      border-top: 1px solid #555555;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .size-hero-section {
+        height: 60vh;
+      }
+      .size-hero-content h1 {
+        font-size: 40px;
+      }
+      .size-hero-content p {
+        font-size: 18px;
+      }
+      .measure-content {
+        flex-direction: column;
+        gap: 30px;
+      }
+      .measure-content img {
+        max-width: 300px;
+      }
+      .measure-text h2,
+      .size-chart-section h2,
+      .fit-tips-section h2,
+      .faq-section h2,
+      .video-section h2,
+      .testimonials-section h2,
+      .contact-support-section h2 {
+        font-size: 32px;
+      }
+      .measure-text ol li {
+        font-size: 14px;
+      }
+      .size-chart-section .tabs {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .size-chart-section .tab {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
+      .size-chart-section table {
+        font-size: 12px;
+      }
+      .size-chart-section th,
+      .size-chart-section td {
+        padding: 10px;
+      }
+      .fit-tips-section ul li {
+        font-size: 14px;
+      }
+      .faq-section .faq-question {
+        font-size: 14px;
+      }
+      .faq-section .faq-answer {
+        font-size: 12px;
+      }
+      .video-section iframe {
+        height: 300px;
+      }
+      .testimonial-card p {
+        font-size: 12px;
+      }
+      .contact-support-section p {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .size-hero-section {
+        height: 50vh;
+      }
+      .size-hero-content h1 {
+        font-size: 32px;
+      }
+      .size-hero-content p {
+        font-size: 16px;
+      }
+      .measure-text h2,
+      .size-chart-section h2,
+      .fit-tips-section h2,
+      .faq-section h2,
+      .video-section h2,
+      .testimonials-section h2,
+      .contact-support-section h2 {
+        font-size: 28px;
+      }
+      .measure-text ol li {
+        font-size: 12px;
+        padding-left: 30px;
+      }
+      .measure-text ol li::before {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+      }
+      .size-chart-section .tab {
+        font-size: 12px;
+        padding: 8px 16px;
+      }
+      .size-chart-section table {
+        font-size: 10px;
+      }
+      .size-chart-section th,
+      .size-chart-section td {
+        padding: 8px;
+      }
+      .fit-tips-section ul li {
+        font-size: 12px;
+      }
+      .faq-section .faq-question {
+        font-size: 12px;
+      }
+      .faq-section .faq-answer {
+        font-size: 10px;
+      }
+      .video-section iframe {
+        height: 200px;
+      }
+      .testimonial-card p {
+        font-size: 10px;
+      }
+      .contact-support-section p {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <img src="assets/images/pius-trex-logo.png" alt="Pius Trex Shoes Logo - A circular emblem with a stylized shoe and dinosaur footprint">
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="size-guide.html">Size Guide</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Size Guide Hero Section -->
+  <section class="size-hero-section">
+    <div class="size-hero-content">
+      <h1>Find Your Perfect Fit</h1>
+      <p>Step into comfort with our easy-to-use size guide. Measure your feet and explore our size charts for women, men, and kids.</p>
+      <a href="#measure">Get Started</a>
+    </div>
+  </section>
+
+  <!-- How to Measure Section -->
+  <section class="measure-section" id="measure">
+    <div class="container">
+      <h2 class="visible"><i class="fas fa-ruler"></i> How to Measure Your Feet</h2>
+      <div class="divider"></div>
+      <div class="measure-content">
+        <img src="https://images.pexels.com/photos/1598509/pexels-photo-1598509.jpeg" alt="Illustration of measuring a foot">
+        <div class="measure-text">
+          <ol>
+            <li>Gather a piece of paper, a pen, and a ruler, then stand on the paper with your heel against a wall.</li>
+            <li>Mark the longest part of your foot (from heel to the tip of your longest toe) with the pen.</li>
+            <li>Measure the distance between the wall and the mark in centimeters or inches using the ruler.</li>
+            <li>Repeat the process for the other foot, as one foot may be slightly larger than the other.</li>
+            <li>Use the larger measurement to find your size in the charts below.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Size Chart Section -->
+  <section class="size-chart-section">
+    <div class="container">
+      <h2 class="visible"><i class="fas fa-table"></i> Size Charts</h2>
+      <div class="divider"></div>
+      <div class="tabs">
+        <div class="tab active" data-tab="women">Women</div>
+        <div class="tab" data-tab="men">Men</div>
+        <div class="tab" data-tab="kids">Kids</div>
+      </div>
+      <!-- Women's Size Chart -->
+      <div class="tab-content active" id="women">
+        <table>
+          <thead>
+            <tr>
+              <th>US</th>
+              <th>UK</th>
+              <th>EU</th>
+              <th>Foot Length (cm)</th>
+              <th>Foot Length (in)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>5</td>
+              <td>3</td>
+              <td>35-36</td>
+              <td>22.0</td>
+              <td>8.66</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>4</td>
+              <td>36-37</td>
+              <td>23.0</td>
+              <td>9.06</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>5</td>
+              <td>37-38</td>
+              <td>24.0</td>
+              <td>9.45</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>6</td>
+              <td>38-39</td>
+              <td>25.0</td>
+              <td>9.84</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>7</td>
+              <td>39-40</td>
+              <td>26.0</td>
+              <td>10.24</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>8</td>
+              <td>40-41</td>
+              <td>27.0</td>
+              <td>10.63</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td>9</td>
+              <td>41-42</td>
+              <td>28.0</td>
+              <td>11.02</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td>10</td>
+              <td>42-43</td>
+              <td>29.0</td>
+              <td>11.42</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="note">Note: If you’re between sizes, we recommend sizing up for a more comfortable fit.</p>
+      </div>
+      <!-- Men's Size Chart -->
+      <div class="tab-content" id="men">
+        <table>
+          <thead>
+            <tr>
+              <th>US</th>
+              <th>UK</th>
+              <th>EU</th>
+              <th>Foot Length (cm)</th>
+              <th>Foot Length (in)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>7</td>
+              <td>6</td>
+              <td>39-40</td>
+              <td>25.0</td>
+              <td>9.84</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>7</td>
+              <td>40-41</td>
+              <td>26.0</td>
+              <td>10.24</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>8</td>
+              <td>41-42</td>
+              <td>27.0</td>
+              <td>10.63</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>9</td>
+              <td>42-43</td>
+              <td>28.0</td>
+              <td>11.02</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td>10</td>
+              <td>43-44</td>
+              <td>29.0</td>
+              <td>11.42</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td>11</td>
+              <td>44-45</td>
+              <td>30.0</td>
+              <td>11.81</td>
+            </tr>
+            <tr>
+              <td>13</td>
+              <td>12</td>
+              <td>45-46</td>
+              <td>31.0</td>
+              <td>12.20</td>
+            </tr>
+            <tr>
+              <td>14</td>
+              <td>13</td>
+              <td>46-47</td>
+              <td>32.0</td>
+              <td>12.60</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="note">Note: If you’re between sizes, we recommend sizing up for a more comfortable fit.</p>
+      </div>
+      <!-- Kids' Size Chart -->
+      <div class="tab-content" id="kids">
+        <table>
+          <thead>
+            <tr>
+              <th>US</th>
+              <th>UK</th>
+              <th>EU</th>
+              <th>Foot Length (cm)</th>
+              <th>Foot Length (in)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>10C</td>
+              <td>9</td>
+              <td>27</td>
+              <td>16.5</td>
+              <td>6.50</td>
+            </tr>
+            <tr>
+              <td>11C</td>
+              <td>10</td>
+              <td>28</td>
+              <td>17.0</td>
+              <td>6.69</td>
+            </tr>
+            <tr>
+              <td>12C</td>
+              <td>11</td>
+              <td>29</td>
+              <td>18.0</td>
+              <td>7.09</td>
+            </tr>
+            <tr>
+              <td>13C</td>
+              <td>12</td>
+              <td>30-31</td>
+              <td>19.0</td>
+              <td>7.48</td>
+            </tr>
+            <tr>
+              <td>1Y</td>
+              <td>13</td>
+              <td>32</td>
+              <td>20.0</td>
+              <td>7.87</td>
+            </tr>
+            <tr>
+              <td>2Y</td>
+              <td>1</td>
+              <td>33</td>
+              <td>21.0</td>
+              <td>8.27</td>
+            </tr>
+            <tr>
+              <td>3Y</td>
+              <td>2</td>
+              <td>34</td>
+              <td>22.0</td>
+              <td>8.66</td>
+            </tr>
+            <tr>
+              <td>4Y</td>
+              <td>3</td>
+              <td>35</td>
+              <td>23.0</td>
+              <td>9.06</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="note">Note: Kids’ feet grow quickly, so we recommend measuring every few months and sizing up if between sizes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fit Tips Section -->
+  <section class="fit-tips-section">
+    <div class="container">
+      <h2 class="visible"><i class="fas fa-lightbulb"></i> Tips for the Perfect Fit</h2>
+      <div class="divider"></div>
+      <ul>
+        <li>Measure your feet in the evening, as they tend to swell slightly throughout the day.</li>
+        <li>Consider the type of socks you’ll wear with your shoes—thicker socks may require a slightly larger size.</li>
+        <li>If you have wider feet, opt for a half size up to ensure enough room in the toe box.</li>
+        <li>Walk around in your shoes on a clean surface to test the fit before wearing them outdoors.</li>
+        <li>Check that there’s about a thumb’s width of space between your longest toe and the end of the shoe.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <h2 class="visible"><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+      <div class="divider"></div>
+      <div class="faq-item">
+        <div class="faq-question">What if I’m between sizes?</div>
+        <div class="faq-answer">We recommend sizing up for a more comfortable fit, especially if you have wider feet or plan to wear thicker socks.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How often should I measure my kids’ feet?</div>
+        <div class="faq-answer">Kids’ feet grow quickly, so we suggest measuring every 2-3 months to ensure the best fit.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do your shoes run true to size?</div>
+        <div class="faq-answer">Most of our shoes run true to size, but we recommend checking the size chart and measuring your feet for accuracy.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Can I return shoes if the size doesn’t fit?</div>
+        <div class="faq-answer">Yes, we offer a hassle-free return policy within 30 days if the shoes are unworn and in their original condition.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Tutorial Section -->
+  <section class="video-section">
+    <div class="container">
+      <h2 class="visible"><i class="fas fa-video"></i> Watch Our Sizing Tutorial</h2>
+      <div class="divider"></div>
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/6zLbo6lXADg" title="How to Measure Your Feet for Shoes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="container">
+      <h2 class="visible"><i class="fas fa-users"></i> What Our Customers Say</h2>
+      <div class="divider"></div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p>"The size guide was super helpful! My shoes fit perfectly, and I love the comfort."</p>
+          <span>— Emily R.</span>
+        </div>
+        <div class="testimonial-card">
+          <p>"I was between sizes, and the guide suggested sizing up. Best decision—my boots feel amazing!"</p>
+          <span>— James K.</span>
+        </div>
+        <div class="testimonial-card">
+          <p>"Measuring my kids’ feet was easy with the steps provided. Their new shoes fit great!"</p>
+          <span>— Sarah M.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Support Section -->
+  <section class="contact-support-section">
+    <div class="container">
+      <h2 class="visible"><i class="fas fa-headset"></i> Need Help with Sizing?</h2>
+      <div class="divider"></div>
+      <p>Our team is here to assist you! Reach out to us for personalized sizing advice or any other questions you may have.</p>
+      <a href="contact.html">Contact Us</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <!-- Quick Links -->
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="size-guide.html">Size Guide</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <!-- Contact Info -->
+        <div class="footer-section">
+          <h4>Contact Us</h4>
+          <p>Email: <a href="mailto:trexpius4@gmail.com">trexpius4@gmail.com</a></p>
+          <p>Phone: <a href="tel:+256762361467">+256 762 361 467</a></p>
+          <p>WhatsApp: <a href="https://wa.me/256748453425" target="_blank">+256 748 453 425</a></p>
+          <p>Address: Namugongo, Kampala, Uganda</p>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© 2025 Pius Trex Shoes. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Fade-in and scale-up animation on scroll for sections, images, videos, testimonials, and headings
+    const elements = document.querySelectorAll('.size-hero-section, .measure-section, .size-chart-section, .fit-tips-section, .faq-section, .video-section, .testimonials-section, .contact-support-section, .measure-content img, .video-wrapper, .testimonial-card, h2');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    elements.forEach(element => observer.observe(element));
+
+    // Slide-in animation for measurement steps and FAQ items
+    const stepsAndFaqs = document.querySelectorAll('.measure-text ol li, .faq-item');
+    const stepObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 200); // Delay each item by 200ms
+        }
+      });
+    }, { threshold: 0.1 });
+    stepsAndFaqs.forEach(item => stepObserver.observe(item));
+
+    // Tab functionality for size charts
+    const tabs = document.querySelectorAll('.tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // FAQ accordion functionality
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const isActive = question.classList.contains('active');
+        faqQuestions.forEach(q => q.classList.remove('active'));
+        document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+        if (!isActive) {
+          question.classList.add('active');
+          answer.style.display = 'block';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Pius Trex Shoes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333333;
+      line-height: 1.6;
+      background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header Styles */
+    header {
+      background: #ffffff;
+      padding: 20px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 50;
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo img {
+      width: 60px;
+      height: 60px;
+      transition: transform 0.3s ease;
+    }
+    .logo img:hover {
+      transform: rotate(10deg) scale(1.1);
+    }
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+    nav ul li a {
+      color: #333333;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 20px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    nav ul li a:hover {
+      background: #e53e3e;
+      color: #ffffff;
+    }
+    nav ul li a.active {
+      background: #e53e3e;
+      color: #ffffff;
+    }
+
+    /* About Hero Section */
+    .about-hero-section {
+      position: relative;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/3261068/pexels-photo-3261068.jpeg') no-repeat center center/cover;
+      color: #ffffff;
+      margin-bottom: 40px;
+    }
+    .about-hero-content h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .about-hero-content.visible h1 {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .about-hero-content p {
+      font-size: 18px;
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+    }
+    .about-hero-content.visible p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Our Story Section */
+    .our-story-section {
+      padding: 60px 0;
+      background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%), url('https://www.transparenttextures.com/patterns/cubes.png');
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .our-story-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .story-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .story-content img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 15px;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .story-content img.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .story-text {
+      text-align: left;
+    }
+    .story-text h2 {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #333333;
+      position: relative;
+      display: inline-block;
+    }
+    .story-text h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #e53e3e, #ff7878);
+      border-radius: 2px;
+    }
+    .story-text p {
+      font-size: 16px;
+      color: #555555;
+      margin-bottom: 20px;
+    }
+
+    /* Our Team Section */
+    .team-section {
+      padding: 60px 0;
+      text-align: center;
+      background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%), url('https://www.transparenttextures.com/patterns/subtle-stripes.png');
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .team-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .team-section h2 {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 40px;
+      color: #333333;
+      position: relative;
+      display: inline-block;
+    }
+    .team-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #e53e3e, #ff7878);
+      border-radius: 2px;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 0 20px;
+    }
+    .team-member {
+      perspective: 1000px;
+    }
+    .team-card {
+      position: relative;
+      width: 100%;
+      height: 350px;
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      background: #fafafa;
+      border: 2px solid transparent;
+      background: linear-gradient(#fafafa, #fafafa), linear-gradient(135deg, #e53e3e, #ff7878);
+      background-clip: padding-box, border-box;
+    }
+    .team-member:hover .team-card {
+      transform: rotateY(180deg);
+    }
+    .team-card-front,
+    .team-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+    }
+    .team-card-front {
+      background: #fafafa;
+    }
+    .team-card-back {
+      background: linear-gradient(135deg, #e53e3e, #ff7878);
+      color: #ffffff;
+      transform: rotateY(180deg);
+    }
+    .team-card-front img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      object-fit: cover;
+      border: 3px solid #e53e3e;
+      transition: border-color 0.3s ease;
+    }
+    .team-member:hover .team-card-front img {
+      border-color: #ff7878;
+    }
+    .team-card-front h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #333333;
+      margin-bottom: 5px;
+    }
+    .team-card-front p {
+      font-size: 14px;
+      color: #e53e3e;
+      margin-bottom: 10px;
+    }
+    .team-card-back span {
+      font-size: 14px;
+      font-style: italic;
+      line-height: 1.8;
+    }
+
+    /* Our Values Section */
+    .values-section {
+      padding: 60px 0;
+      text-align: center;
+      background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .values-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .values-section h2 {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 40px;
+      color: #333333;
+      position: relative;
+      display: inline-block;
+    }
+    .values-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #e53e3e, #ff7878);
+      border-radius: 2px;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 0 20px;
+    }
+    .value-item {
+      background: #fafafa;
+      border-radius: 15px;
+      padding: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .value-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+    .value-item svg {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 20px;
+    }
+    .value-item h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #e53e3e;
+    }
+    .value-item p {
+      font-size: 14px;
+      color: #555555;
+    }
+
+    /* Our Mission Section */
+    .mission-section {
+      padding: 60px 0;
+      text-align: center;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .mission-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .mission-section h2 {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #333333;
+      position: relative;
+      display: inline-block;
+    }
+    .mission-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #e53e3e, #ff7878);
+      border-radius: 2px;
+    }
+    .mission-section p {
+      font-size: 16px;
+      color: #555555;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Sustainability Commitment Section */
+    .sustainability-section {
+      padding: 60px 0;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.pexels.com/photos/1598506/pexels-photo-1598506.jpeg') no-repeat center center/cover;
+      color: #ffffff;
+      border-radius: 15px;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .sustainability-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .sustainability-section h2 {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+    .sustainability-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: #ffffff;
+      border-radius: 2px;
+    }
+    .sustainability-section p {
+      font-size: 16px;
+      max-width: 800px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    /* Our Process Section */
+    .process-section {
+      padding: 60px 0;
+      text-align: center;
+      background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .process-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .process-section h2 {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 40px;
+      color: #333333;
+      position: relative;
+      display: inline-block;
+    }
+    .process-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #e53e3e, #ff7878);
+      border-radius: 2px;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 0 20px;
+    }
+    .process-step {
+      background: #fafafa;
+      border-radius: 15px;
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .process-step:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+    .process-step h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #e53e3e;
+      margin-bottom: 10px;
+    }
+    .process-step p {
+      font-size: 14px;
+      color: #555555;
+    }
+
+    /* Community Impact Section */
+    .community-section {
+      padding: 60px 0;
+      text-align: center;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .community-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .community-section h2 {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #333333;
+      position: relative;
+      display: inline-block;
+    }
+    .community-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #e53e3e, #ff7878);
+      border-radius: 2px;
+    }
+    .community-section p {
+      font-size: 16px;
+      color: #555555;
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+    .community-section img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 15px;
+      margin: 0 auto;
+      display: block;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .community-section img.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Join Our Journey Section */
+    .join-section {
+      padding: 60px 0;
+      text-align: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg') no-repeat center center/cover;
+      color: #ffffff;
+      border-radius: 15px;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .join-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .join-section h2 {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+    .join-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: #ffffff;
+      border-radius: 2px;
+    }
+    .join-section p {
+      font-size: 16px;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      font-weight: 300;
+    }
+    .join-section a {
+      padding: 12px 30px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      background: linear-gradient(135deg, #e53e3e 0%, #ff7878 100%);
+      color: #ffffff;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .join-section a:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(135deg, #c53030 0%, #e53e3e 100%);
+    }
+
+    /* Our Location Section (Map) */
+    .location-section {
+      padding: 60px 0;
+      text-align: center;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .location-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .location-section h2 {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #333333;
+      position: relative;
+      display: inline-block;
+    }
+    .location-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #e53e3e, #ff7878);
+      border-radius: 2px;
+    }
+    .location-section iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 400px;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Footer Styles */
+    footer {
+      background: linear-gradient(135deg, #333333 0%, #4a4a4a 100%);
+      color: #ffffff;
+      padding: 40px 0;
+    }
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 20px;
+    }
+    .footer-section h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    .footer-section ul {
+      list-style: none;
+    }
+    .footer-section ul li {
+      margin-bottom: 10px;
+    }
+    .footer-section ul li a {
+      color: #cccccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-section ul li a:hover {
+      color: #ffffff;
+    }
+    .footer-section p {
+      font-size: 14px;
+      color: #cccccc;
+      margin-bottom: 10px;
+    }
+    .footer-section p a {
+      color: #e53e3e;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-section p a:hover {
+      color: #ff7878;
+    }
+    footer .copyright {
+      text-align: center;
+      font-size: 14px;
+      padding-top: 20px;
+      border-top: 1px solid #555555;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .about-hero-section,
+      .sustainability-section,
+      .join-section {
+        height: 60vh;
+      }
+      .about-hero-content h1,
+      .sustainability-section h2,
+      .join-section h2,
+      .location-section h2 {
+        font-size: 36px;
+      }
+      .about-hero-content p,
+      .sustainability-section p,
+      .join-section p {
+        font-size: 16px;
+      }
+      .story-content {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .story-content img {
+        max-width: 300px;
+      }
+      .story-text h2,
+      .team-section h2,
+      .values-section h2,
+      .mission-section h2,
+      .process-section h2,
+      .community-section h2,
+      .location-section h2 {
+        font-size: 28px;
+      }
+      .team-card {
+        height: 400px;
+      }
+      .location-section iframe {
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .about-hero-section,
+      .sustainability-section,
+      .join-section {
+        height: 50vh;
+      }
+      .about-hero-content h1,
+      .sustainability-section h2,
+      .join-section h2,
+      .location-section h2 {
+        font-size: 28px;
+      }
+      .about-hero-content p,
+      .sustainability-section p,
+      .join-section p {
+        font-size: 14px;
+      }
+      .story-text h2,
+      .team-section h2,
+      .values-section h2,
+      .mission-section h2,
+      .process-section h2,
+      .community-section h2,
+      .location-section h2 {
+        font-size: 24px;
+      }
+      .team-card {
+        height: 450px;
+      }
+      .team-card-front img {
+        width: 100px;
+        height: 100px;
+      }
+      .team-card-front h3 {
+        font-size: 18px;
+      }
+      .team-card-front p {
+        font-size: 12px;
+      }
+      .team-card-back span {
+        font-size: 12px;
+      }
+      .value-item h3 {
+        font-size: 18px;
+      }
+      .value-item p {
+        font-size: 12px;
+      }
+      .process-step h3 {
+        font-size: 16px;
+      }
+      .process-step p {
+        font-size: 12px;
+      }
+      .location-section iframe {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <img src="assets/images/pius-trex-logo.png" alt="Pius Trex Shoes Logo - A circular emblem with a stylized shoe and dinosaur footprint">
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="size-guide.html">Size Guide</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Hero Section -->
+  <section class="about-hero-section">
+    <div class="about-hero-content">
+      <h1>About Pius Trex Shoes</h1>
+      <p>We’re more than just a footwear brand—we’re a movement dedicated to style, comfort, and sustainability in every step.</p>
+    </div>
+  </section>
+
+  <!-- Our Story Section -->
+  <section class="our-story-section">
+    <div class="container">
+      <div class="story-content">
+        <img src="https://images.pexels.com/photos/3261068/pexels-photo-3261068.jpeg" alt="Pius Trex Shoes Storefront">
+        <div class="story-text">
+          <h2>Our Story</h2>
+          <p>Founded in 2018, Pius Trex Shoes was born out of a passion for creating footwear that doesn’t compromise on style or comfort. Our founders, avid travelers and style enthusiasts, noticed a gap in the market for shoes that could keep up with both urban adventures and rugged terrains. Inspired by the resilience of the T-Rex, we set out to design shoes that are bold, durable, and timeless.</p>
+          <p>Today, Pius Trex Shoes is proud to offer a wide range of footwear, from sleek sneakers to sturdy boots, all crafted with eco-friendly materials and a commitment to quality. Join us on our journey to redefine what it means to step confidently into the world.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Team Section -->
+  <section class="team-section">
+    <div class="container">
+      <h2>Meet Our Team</h2>
+      <div class="team-grid">
+        <!-- Team Member 1 -->
+        <div class="team-member">
+          <div class="team-card">
+            <div class="team-card-front">
+              <img src="Screenshot_2024-12-23-19-11-20-76.png" alt="Alex Carter">
+              <h3>Kasumba pius</h3>
+              <p>Founder & CEO</p>
+            </div>
+            <div class="team-card-back">
+              <span>"At Pius Trex Shoes, we’re building a legacy of innovation and sustainability, crafting footwear that empowers every journey with confidence and style."</span>
+            </div>
+          </div>
+        </div>
+        <!-- Team Member 2 -->
+        <div class="team-member">
+          <div class="team-card">
+            <div class="team-card-front">
+              <img src="c:\Users\trxpius\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\TempState\94B5BDE6DE888DDF9CDE6748AD2523D1\WhatsApp Image 2025-04-20 at 15.46.40_ea8156b1.jpg" alt="Maria Evans">
+              <h3>Nampijja Gloria</h3>
+              <p>Lead Designer</p>
+            </div>
+            <div class="team-card-back">
+              <span>"Designing for Pius Trex Shoes is about blending bold aesthetics with functionality—creating shoes that look as good as they feel, no matter where life takes you."</span>
+            </div>
+          </div>
+        </div>
+        <!-- Team Member 3 -->
+        <div class="team-member">
+          <div class="team-card">
+            <div class="team-card-front">
+              <img src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg" alt="Liam Brooks">
+              <h3>Liam Brooks</h3>
+              <p>Production Manager</p>
+            </div>
+            <div class="team-card-back">
+              <span>"I take pride in ensuring every pair of Pius Trex Shoes meets our rigorous standards—delivering durability and comfort that our customers can trust."</span>
+            </div>
+          </div>
+        </div>
+        <!-- Team Member 4 -->
+        <div class="team-member">
+          <div class="team-card">
+            <div class="team-card-front">
+              <img src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg" alt="Sophie Lee">
+              <h3>Sophie Lee</h3>
+              <p>Marketing Director</p>
+            </div>
+            <div class="team-card-back">
+              <span>"Pius Trex Shoes isn’t just a brand—it’s a community. I love connecting with our customers and sharing our story of style, sustainability, and adventure."</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Values Section -->
+  <section class="values-section">
+    <div class="container">
+      <h2>Our Core Values</h2>
+      <div class="values-grid">
+        <!-- Value 1 -->
+        <div class="value-item">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#e53e3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          <h3>Quality First</h3>
+          <p>We never compromise on quality, ensuring every pair is crafted to last.</p>
+        </div>
+        <!-- Value 2 -->
+        <div class="value-item">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#e53e3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+          </svg>
+          <h3>Sustainability</h3>
+          <p>We’re committed to eco-friendly practices, from materials to production.</p>
+        </div>
+        <!-- Value 3 -->
+        <div class="value-item">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#e53e3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          <h3>Innovation</h3>
+          <p>We push boundaries with designs that are both trendy and functional.</p>
+        </div>
+        <!-- Value 4 -->
+        <div class="value-item">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#e53e3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14v6l5 3"/>
+          </svg>
+          <h3>Customer Focus</h3>
+          <p>Your satisfaction drives us to deliver the best in every step.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Mission Section -->
+  <section class="mission-section">
+    <div class="container">
+      <h2>Our Mission</h2>
+      <p>At Pius Trex Shoes, our mission is to empower every step with footwear that combines bold style, unmatched comfort, and a commitment to sustainability. We strive to inspire confidence in our customers, whether they’re exploring city streets or rugged trails, by delivering shoes that are as durable as they are fashionable.</p>
+    </div>
+  </section>
+
+  <!-- Sustainability Commitment Section -->
+  <section class="sustainability-section">
+    <div class="container">
+      <h2>Sustainability Commitment</h2>
+      <p>We believe in walking lightly on the planet. That’s why we use eco-friendly materials like recycled rubber and organic cotton in our shoes. Our production process minimizes waste, and we partner with organizations to plant a tree for every pair sold, ensuring a greener future for generations to come.</p>
+    </div>
+  </section>
+
+  <!-- Our Process Section -->
+  <section class="process-section">
+    <div class="container">
+      <h2>Our Craftsmanship Process</h2>
+      <div class="process-grid">
+        <!-- Step 1 -->
+        <div class="process-step">
+          <h3>Design Innovation</h3>
+          <p>Our designers sketch concepts that balance style and functionality, inspired by global trends and customer feedback.</p>
+        </div>
+        <!-- Step 2 -->
+          <h3>Material Selection</h3>
+          <p>We source sustainable materials, ensuring each component meets our high standards for quality and eco-friendliness.</p>
+        </div>
+        <!-- Step 3 -->
+        <div class="process-step">
+          <h3>Handcrafted Precision</h3>
+          <p>Skilled artisans craft each pair with meticulous attention to detail, ensuring durability and comfort.</p>
+        </div>
+        <!-- Step 4 -->
+        <div class="process-step">
+          <h3>Quality Assurance</h3>
+          <p>Every shoe undergoes rigorous testing to guarantee it meets our strict quality and performance standards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Impact Section -->
+  <section class="community-section">
+    <div class="container">
+      <h2>Community Impact</h2>
+      <p>We’re proud to give back to the communities that support us. Through partnerships with local charities, we donate shoes to those in need and sponsor youth sports programs to encourage active lifestyles. Together, we’re making a positive impact, one step at a time.</p>
+      <img src="https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg" alt="Community event sponsored by Pius Trex Shoes">
+    </div>
+  </section>
+
+  <!-- Join Our Journey Section -->
+  <section class="join-section">
+    <div class="container">
+      <h2>Join Our Journey</h2>
+      <p>Be part of the Pius Trex Shoes family! Follow us on social media, sign up for our newsletter, or explore our latest collections to step into style and sustainability with us.</p>
+      <a href="index.html">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Our Location Section (Map) -->
+  <section class="location-section">
+    <div class="container">
+      <h2>Our Location</h2>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15959.451989352263!2d32.63750013851083!3d0.3833000000000087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbbb8b0d8c3e5%3A0x9c1bdedb67638e2e!2sNamugongo%2C%20Kampala%2C%20Uganda!5e0!3m2!1sen!2sus!4v1698181234567!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <!-- Quick Links -->
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="size-guide.html">Size Guide</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <!-- Contact Info -->
+        <div class="footer-section">
+          <h4>Contact Us</h4>
+          <p>Email: <a href="mailto:trexpius4@gmail.com">trexpius4@gmail.com</a></p>
+          <p>Phone: <a href="tel:+256748455425">+256 748455425</a></p>
+          <p>WhatsApp: <a href="https://wa.me/256762361467" target="_blank">+256 762361467</a></p>
+          <p>Address: Namugongo, Kampala, Uganda</p>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© 2025 Pius Trex Shoes. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Fade-in animation on scroll
+    const sections = document.querySelectorAll('.about-hero-section, .our-story-section, .team-section, .values-section, .mission-section, .sustainability-section, .process-section, .community-section, .join-section, .location-section, .story-content img, .community-section img');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>

@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Pius Trex Shoes - Explore Our Collection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333333;
+      line-height: 1.8;
+      background: linear-gradient(135deg, #f9ecec 0%, #ffffff 100%);
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
+
+    /* Decorative Divider */
+    .divider {
+      width: 120px;
+      height: 4px;
+      background: linear-gradient(to right, #d32f2f, #ff5252);
+      border-radius: 2px;
+      margin: 20px auto;
+      position: relative;
+    }
+    .divider::after {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      background: #FFD700;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.2); }
+      100% { transform: translateX(-50%) scale(1); }
+    }
+
+    /* Header Styles */
+    header {
+      background: #ffffff;
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      transition: padding 0.3s ease, box-shadow 0.3s ease;
+    }
+    header.scrolled {
+      padding: 10px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo img {
+      width: 60px;
+      height: 60px;
+      transition: transform 0.3s ease;
+    }
+    .logo img:hover {
+      transform: rotate(10deg) scale(1.1);
+    }
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+    nav ul li a {
+      color: #333333;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 10px 15px;
+      border-radius: 25px;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+    nav ul li a:hover {
+      background: linear-gradient(135deg, #d32f2f 0%, #ff5252 100%);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+    nav ul li a.active {
+      background: linear-gradient(135deg, #d32f2f 0%, #ff5252 100%);
+      color: #ffffff;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg') no-repeat center center/cover;
+      margin-top: 80px;
+    }
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #FFD700;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .hero-content.visible h1 {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hero-content p {
+      font-size: 20px;
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+    }
+    .hero-content.visible p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Shop Section */
+    .shop-section {
+      padding: 80px 0;
+      background: #ffffff url('https://www.transparenttextures.com/patterns/asfalt-dark.png') repeat;
+    }
+    .shop-container {
+      display: flex;
+      gap: 30px;
+    }
+    .filters-sidebar {
+      width: 25%;
+      background: #fafafa;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    .filters-sidebar h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #d32f2f;
+    }
+    .filter-group {
+      margin-bottom: 20px;
+    }
+    .filter-group label {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .filter-group select,
+    .filter-group input[type="range"] {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #cccccc;
+      font-size: 14px;
+    }
+    .filter-group .price-range {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #555555;
+      margin-top: 5px;
+    }
+    .products-area {
+      width: 75%;
+    }
+    .products-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .products-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: #333333;
+    }
+    .products-header select {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #cccccc;
+      font-size: 14px;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .product-card {
+      position: relative;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .product-card.hidden {
+      display: none;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .product-card .sale-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #FFD700;
+      color: #d32f2f;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .product-info {
+      padding: 15px;
+      text-align: center;
+    }
+    .product-info h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #d32f2f;
+    }
+    .product-info .price {
+      font-size: 16px;
+      font-weight: 500;
+      color: #333333;
+      margin-bottom: 10px;
+    }
+    .product-info .price del {
+      color: #999999;
+      font-size: 14px;
+      margin-left: 5px;
+    }
+    .product-actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .product-card:hover .product-actions {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .product-actions button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .product-actions .quick-view {
+      background: #FFD700;
+      color: #333333;
+    }
+    .product-actions .quick-view:hover {
+      background: #ffeb3b;
+    }
+    .product-actions .add-to-cart {
+      background: linear-gradient(135deg, #d32f2f 0%, #ff5252 100%);
+      color: #ffffff;
+    }
+    .product-actions .add-to-cart:hover {
+      background: linear-gradient(135deg, #e53935 0%, #ff6f61 100%);
+    }
+
+    /* Quick View Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      background: #ffffff;
+      width: 90%;
+      max-width: 800px;
+      border-radius: 10px;
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      position: relative;
+    }
+    .modal-content img {
+      width: 50%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .modal-details {
+      width: 50%;
+    }
+    .modal-details h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #d32f2f;
+      margin-bottom: 15px;
+    }
+    .modal-details .price {
+      font-size: 20px;
+      font-weight: 600;
+      color: #333333;
+      margin-bottom: 15px;
+    }
+    .modal-details p {
+      font-size: 14px;
+      color: #555555;
+      margin-bottom: 20px;
+    }
+    .modal-details label {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .modal-details select {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #cccccc;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    .modal-details button {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 5px;
+      background: linear-gradient(135deg, #d32f2f 0%, #ff5252 100%);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .modal-details button:hover {
+      background: linear-gradient(135deg, #e53935 0%, #ff6f61 100%);
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      color: #333333;
+      cursor: pointer;
+    }
+
+    /* Featured Collections Section */
+    .collections-section {
+      padding: 80px 0;
+      background: #1a1a1a url('https://www.transparenttextures.com/patterns/asfalt-dark.png') repeat;
+      color: #ffffff;
+      text-align: center;
+    }
+    .collections-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #FFD700;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .collections-section h2.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .collections-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 20px 0;
+    }
+    .collection-card {
+      position: relative;
+      height: 300px;
+      border-radius: 10px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .collection-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .collection-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .collection-card .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+    }
+    .collection-card:hover .overlay {
+      background: rgba(0, 0, 0, 0.7);
+    }
+    .collection-card h3 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #FFD700;
+    }
+
+    /* Customer Reviews Section */
+    .reviews-section {
+      padding: 80px 0;
+      background: #ffffff url('https://www.transparenttextures.com/patterns/asfalt-dark.png') repeat;
+      text-align: center;
+    }
+    .reviews-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #333333;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reviews-section h2.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .reviews-carousel {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .reviews-slides {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .review-slide {
+      min-width: 100%;
+      padding: 20px;
+      background: #fafafa;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .review-slide.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .review-slide p {
+      font-size: 16px;
+      font-style: italic;
+      color: #555555;
+      margin-bottom: 10px;
+    }
+    .review-slide h4 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #d32f2f;
+    }
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+    .carousel-nav button {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #d32f2f;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    /* Why Choose Us Section */
+    .why-choose-section {
+      padding: 80px 0;
+      background: #1a1a1a url('https://www.transparenttextures.com/patterns/asfalt-dark.png') repeat;
+      color: #ffffff;
+      text-align: center;
+    }
+    .why-choose-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #FFD700;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .why-choose-section h2.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .why-choose-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 20px 0;
+    }
+    .why-choose-card {
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .why-choose-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .why-choose-card i {
+      font-size: 40px;
+      color: #FFD700;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+    .why-choose-card:hover i {
+      transform: rotate(360deg);
+    }
+    .why-choose-card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .why-choose-card p {
+      font-size: 14px;
+      font-weight: 300;
+    }
+    .why-choose-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Newsletter Signup Section */
+    .newsletter-section {
+      padding: 80px 0;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg') no-repeat center center/cover;
+      color: #ffffff;
+      text-align: center;
+    }
+    .newsletter-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #FFD700;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .newsletter-section h2.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .newsletter-section p {
+      font-size: 18px;
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .newsletter-section p.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .newsletter-form {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .newsletter-form.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .newsletter-form input[type="email"] {
+      padding: 12px 20px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+      width: 300px;
+    }
+    .newsletter-form button {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 5px;
+      background: linear-gradient(135deg, #d32f2f 0%, #ff5252 100%);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .newsletter-form button:hover {
+      background: linear-gradient(135deg, #e53935 0%, #ff6f61 100%);
+    }
+
+    /* Load More Button */
+    .load-more {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .load-more button {
+      padding: 12px 40px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #d32f2f 0%, #ff5252 100%);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .load-more button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(211, 47, 47, 0.5);
+    }
+
+    /* Scroll-to-Top Button */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #d32f2f 0%, #ff5252 100%);
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 50;
+    }
+    .scroll-to-top.visible {
+      opacity: 1;
+    }
+    .scroll-to-top:hover {
+      transform: scale(1.1);
+    }
+
+    /* Footer Styles */
+    footer {
+      background: linear-gradient(135deg, #333333 0%, #4a4a4a 100%);
+      color: #ffffff;
+      padding: 50px 0;
+    }
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    .footer-section h4 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    .footer-section ul {
+      list-style: none;
+    }
+    .footer-section ul li {
+      margin-bottom: 12px;
+    }
+    .footer-section ul li a {
+      color: #cccccc;
+      text-decoration: none;
+      font-weight: 300;
+      transition: color 0.3s ease;
+    }
+    .footer-section ul li a:hover {
+      color: #ffffff;
+    }
+    .footer-section p {
+      font-size: 14px;
+      color: #cccccc;
+      margin-bottom: 12px;
+      font-weight: 300;
+    }
+    .footer-section p a {
+      color: #d32f2f;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-section p a:hover {
+      color: #ff5252;
+    }
+    footer .copyright {
+      text-align: center;
+      font-size: 14px;
+      padding-top: 20px;
+      border-top: 1px solid #555555;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-section {
+        height: 50vh;
+      }
+      .hero-content h1 {
+        font-size: 40px;
+      }
+      .hero-content p {
+        font-size: 16px;
+      }
+      .shop-container {
+        flex-direction: column;
+      }
+      .filters-sidebar,
+      .products-area {
+        width: 100%;
+      }
+      .products-header h2 {
+        font-size: 28px;
+      }
+      .scroll-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+      .modal-content {
+        flex-direction: column;
+        padding: 15px;
+      }
+      .modal-content img,
+      .modal-details {
+        width: 100%;
+      }
+      .modal-content img {
+        height: 200px;
+      }
+      .collections-section h2,
+      .reviews-section h2,
+      .why-choose-section h2,
+      .newsletter-section h2 {
+        font-size: 36px;
+      }
+      .collection-card {
+        height: 200px;
+      }
+      .newsletter-form {
+        flex-direction: column;
+        align-items: center;
+      }
+      .newsletter-form input[type="email"] {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-section {
+        height: 40vh;
+      }
+      .hero-content h1 {
+        font-size: 32px;
+      }
+      .hero-content p {
+        font-size: 14px;
+      }
+      .products-header h2 {
+        font-size: 24px;
+      }
+      .product-card img {
+        height: 150px;
+      }
+      .collections-section h2,
+      .reviews-section h2,
+      .why-choose-section h2,
+      .newsletter-section h2 {
+        font-size: 28px;
+      }
+      .collection-card {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <img src="assets/images/pius-trex-logo.png" alt="Pius Trex Shoes Logo - A circular emblem with a stylized shoe and dinosaur footprint">
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="shop.html" class="active">Shop</a></li>
+            <li><a href="size-guide.html">Size Guide</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Explore Our Collection</h1>
+      <p>Find the perfect pair of Pius Trex Shoes for every step of your journey.</p>
+    </div>
+  </section>
+
+  <!-- Shop Section -->
+  <section class="shop-section">
+    <div class="container">
+      <div class="shop-container">
+        <!-- Filters Sidebar -->
+        <div class="filters-sidebar">
+          <h3>Filter Products</h3>
+          <div class="filter-group">
+            <label for="category">Category</label>
+            <select id="category">
+              <option value="all">All</option>
+              <option value="men">Men</option>
+              <option value="women">Women</option>
+              <option value="kids">Kids</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="price">Price Range</label>
+            <input type="range" id="price" min="0" max="200" value="200">
+            <div class="price-range">
+              <span>$0</span>
+              <span id="price-value">$200</span>
+            </div>
+          </div>
+          <div class="filter-group">
+            <label for="size">Size</label>
+            <select id="size">
+              <option value="all">All</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Products Area -->
+        <div class="products-area">
+          <div class="products-header">
+            <h2>Our Products</h2>
+            <select id="sort">
+              <option value="default">Sort By: Default</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="newest">Newest First</option>
+            </select>
+          </div>
+          <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+              <img src="https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg" alt="Men's Classic Sneaker">
+              <div class="sale-badge">Sale</div>
+              <div class="product-info">
+                <h3>Men's Classic Sneaker</h3>
+                <div class="price">$80 <del>$100</del> | UGX 293,178 <del>UGX 366,473</del></div>
+                <div class="product-actions">
+                  <button class="quick-view" onclick="openModal('Men\'s Classic Sneaker', '$80 | UGX 293,178', 'A stylish and comfortable sneaker for men, perfect for everyday wear.', 'https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg')">Quick View</button>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="product-card">
+              <img src="https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg" alt="Women's Running Shoes">
+              <div class="product-info">
+                <h3>Women's Running Shoes</h3>
+                <div class="price">$120 | UGX 439,767</div>
+                <div class="product-actions">
+                  <button class="quick-view" onclick="openModal('Women\'s Running Shoes', '$120 | UGX 439,767', 'Lightweight running shoes designed for women, offering great support.', 'https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg')">Quick View</button>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="product-card">
+              <img src="https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg" alt="Kids' Casual Sneaker">
+              <div class="product-info">
+                <h3>Kids' Casual Sneaker</h3>
+                <div class="price">$60 | UGX 219,884</div>
+                <div class="product-actions">
+                  <button class="quick-view" onclick="openModal('Kids\' Casual Sneaker', '$60 | UGX 219,884', 'Durable and fun sneakers for kids, perfect for playtime.', 'https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg')">Quick View</button>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 4 -->
+            <div class="product-card">
+              <img src="https://images.pexels.com/photos/1598506/pexels-photo-1598506.jpeg" alt="Men's Hiking Boots">
+              <div class="product-info">
+                <h3>Men's Hiking Boots</h3>
+                <div class="price">$150 | UGX 549,709</div>
+                <div class="product-actions">
+                  <button class="quick-view" onclick="openModal('Men\'s Hiking Boots', '$150 | UGX 549,709', 'Rugged hiking boots for men, built for tough terrains.', 'https://images.pexels.com/photos/1598506/pexels-photo-1598506.jpeg')">Quick View</button>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 5 -->
+            <div class="product-card hidden">
+              <img src="https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg" alt="Men's Formal Shoes">
+              <div class="product-info">
+                <h3>Men's Formal Shoes</h3>
+                <div class="price">$110 | UGX 403,120</div>
+                <div class="product-actions">
+                  <button class="quick-view" onclick="openModal('Men\'s Formal Shoes', '$110 | UGX 403,120', 'Elegant formal shoes for men, ideal for business and events.', 'https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg')">Quick View</button>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 6 -->
+            <div class="product-card hidden">
+              <img src="https://images.pexels.com/photos/292999/pexels-photo-292999.jpeg" alt="Men's Sports Sneaker">
+              <div class="sale-badge">Sale</div>
+              <div class="product-info">
+                <h3>Men's Sports Sneaker</h3>
+                <div class="price">$90 <del>$120</del> | UGX 329,825 <del>UGX 439,767</del></div>
+                <div class="product-actions">
+                  <button class="quick-view" onclick="openModal('Men\'s Sports Sneaker', '$90 | UGX 329,825', 'High-performance sports sneakers for men, great for workouts.', 'https://images.pexels.com/photos/292999/pexels-photo-292999.jpeg')">Quick View</button>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 7 -->
+            <div class="product-card hidden">
+              <img src="https://images.pexels.com/photos/1598504/pexels-photo-1598504.jpeg" alt="Men's Casual Loafers">
+              <div class="product-info">
+                <h3>Men's Casual Loafers</h3>
+                <div class="price">$85 | UGX 311,502</div>
+                <div class="product-actions">
+                  <button class="quick-view" onclick="openModal('Men\'s Casual Loafers', '$85 | UGX 311,502', 'Comfortable loafers for men, perfect for casual outings.', 'https://images.pexels.com/photos/1598504/pexels-photo-1598504.jpeg')">Quick View</button>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 8 -->
+            <div class="product-card hidden">
+              <img src="https://images.pexels.com/photos/19090/pexels-photo.jpg" alt="Men's Sandals">
+              <div class="product-info">
+                <h3>Men's Sandals</h3>
+                <div class="price">$50 | UGX 183,236</div>
+                <div class="product-actions">
+                  <button class="quick-view" onclick="openModal('Men\'s Sandals', '$50 | UGX 183,236', 'Breathable sandals for men, ideal for warm weather.', 'https://images.pexels.com/photos/19090/pexels-photo.jpg')">Quick View</button>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 9 -->
+            <div class="product-card hidden">
+              <img src="https://images.pexels.com/photos/267301/pexels-photo-267301.jpeg" alt="Women's High-Top Sneakers">
+              <div class="product-info">
+                <h3>Women's High-Top Sneakers</h3>
+                <div class="price">$100 | UGX 366,473</div>
+                <div class="product-actions">
+                  <button class="quick-view" onclick="openModal('Women\'s High-Top Sneakers', '$100 | UGX 366,473', 'Trendy high-top sneakers for women, great for a bold look.', 'https://images.pexels.com/photos/267301/pexels-photo-267301.jpeg')">Quick View</button>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 10 -->
+            <div class="product-card hidden">
+              <img src="https://images.pexels.com/photos/1598509/pexels-photo-1598509.jpeg" alt="Women's Sandals">
+              <div class="sale-badge">Sale</div>
+              <div class="product-info">
+                <h3>Women's Sandals</h3>
+                <div class="price">$70 <del>$90</del> | UGX 256,531 <del>UGX 329,825</del></div>
+                <div class="product-actions">
+                  <button class="quick-view" onclick="openModal('Women\'s Sandals', '$70 | UGX 256,531', 'Elegant sandals for women, perfect for summer outings.', 'https://images.pexels.com/photos/1598509/pexels-photo-1598509.jpeg')">Quick View</button>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 11 -->
+            <div class="product-card hidden">
+              <img src="https://images.pexels.com/photos/1598510/pexels-photo-1598510.jpeg" alt="Kids' Running Shoes">
+              <div class="product-info">
+                <h3>Kids' Running Shoes</h3>
+                <div class="price">$55 | UGX 201,560</div>
+                <div class="product-actions">
+                  <button class="quick-view" onclick="openModal('Kids\' Running Shoes', '$55 | UGX 201,560', 'Lightweight running shoes for kids, designed for active play.', 'https://images.pexels.com/photos/1598510/pexels-photo-1598510.jpeg')">Quick View</button>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 12 -->
+            <div class="product-card hidden">
+              <img src="https://images.pexels.com/photos/1598511/pexels-photo-1598511.jpeg" alt="Kids' Sandals">
+              <div class="product-info">
+                <h3>Kids' Sandals</h3>
+                <div class="price">$40 | UGX 146,589</div>
+                <div class="product-actions">
+                  <button class="quick-view" onclick="openModal('Kids\' Sandals', '$40 | UGX 146,589', 'Comfortable sandals for kids, great for summer adventures.', 'https://images.pexels.com/photos/1598511/pexels-photo-1598511.jpeg')">Quick View</button>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Load More Button -->
+          <div class="load-more">
+            <button onclick="loadMoreProducts()">Load More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Collections Section -->
+  <section class="collections-section">
+    <div class="container">
+      <h2 class="visible">Featured Collections</h2>
+      <div class="divider"></div>
+      <div class="collections-grid">
+        <div class="collection-card">
+          <img src="https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg" alt="Men's Collection">
+          <div class="overlay">
+            <h3>Men's Collection</h3>
+          </div>
+        </div>
+        <div class="collection-card">
+          <img src="https://images.pexels.com/photos/267301/pexels-photo-267301.jpeg" alt="Women's Collection">
+          <div class="overlay">
+            <h3>Women's Collection</h3>
+          </div>
+        </div>
+        <div class="collection-card">
+          <img src="https://images.pexels.com/photos/1598510/pexels-photo-1598510.jpeg" alt="Kids' Collection">
+          <div class="overlay">
+            <h3>Kids' Collection</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Reviews Section -->
+  <section class="reviews-section">
+    <div class="container">
+      <h2 class="visible">What Our Customers Say</h2>
+      <div class="divider"></div>
+      <div class="reviews-carousel">
+        <div class="reviews-slides">
+          <div class="review-slide">
+            <p>"These shoes are the best I’ve ever owned! So comfortable and stylish."</p>
+            <h4>John M., Kampala</h4>
+          </div>
+          <div class="review-slide">
+            <p>"I love the quality and the sustainable materials used. Highly recommend!"</p>
+            <h4>Sarah K., Nairobi</h4>
+          </div>
+          <div class="review-slide">
+            <p>"Perfect for my kids! They wear them every day and they’re still in great shape."</p>
+            <h4>Emily T., Entebbe</h4>
+          </div>
+        </div>
+        <div class="carousel-nav">
+          <button onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+          <button onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="why-choose-section">
+    <div class="container">
+      <h2 class="visible">Why Choose Us</h2>
+      <div class="divider"></div>
+      <div class="why-choose-grid">
+        <div class="why-choose-card">
+          <i class="fas fa-leaf"></i>
+          <h3>Eco-Friendly</h3>
+          <p>We use sustainable materials to protect our planet.</p>
+        </div>
+        <div class="why-choose-card">
+          <i class="fas fa-star"></i>
+          <h3>Top Quality</h3>
+          <p>Our shoes are crafted with the highest standards.</p>
+        </div>
+        <div class="why-choose-card">
+          <i class="fas fa-truck"></i>
+          <h3>Fast Shipping</h3>
+          <p>Get your shoes delivered quickly and safely.</p>
+        </div>
+        <div class="why-choose-card">
+          <i class="fas fa-headset"></i>
+          <h3>Great Support</h3>
+          <p>Our team is here to assist you every step of the way.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Signup Section -->
+  <section class="newsletter-section">
+    <div class="container">
+      <h2 class="visible">Stay Updated</h2>
+      <div class="divider"></div>
+      <p class="visible">Subscribe to our newsletter for the latest updates and exclusive offers.</p>
+      <div class="newsletter-form visible">
+        <input type="email" placeholder="Enter your email" disabled>
+        <button disabled>Subscribe</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick View Modal -->
+  <div class="modal" id="quick-view-modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">×</span>
+      <img id="modal-image" src="" alt="Product Image">
+      <div class="modal-details">
+        <h3 id="modal-title"></h3>
+        <div class="price" id="modal-price"></div>
+        <p id="modal-description"></p>
+        <label for="modal-size">Select Size</label>
+        <select id="modal-size">
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll-to-Top Button -->
+  <div class="scroll-to-top">
+    <i class="fas fa-chevron-up"></i>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="size-guide.html">Size Guide</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact Us</h4>
+          <p>Email: <a href="mailto:trexpius4@gmail.com">trexpius4@gmail.com</a></p>
+          <p>Phone: <a href="tel:+256762361467">+256 762 361 467</a></p>
+          <p>WhatsApp: <a href="https://wa.me/256748453425" target="_blank">+256 748 453 425</a></p>
+          <p>Address: Namugongo, Kampala, Uganda</p>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© 2025 Pius Trex Shoes. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header Scroll Effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      const scrollToTop = document.querySelector('.scroll-to-top');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+        scrollToTop.classList.add('visible');
+      } else {
+        header.classList.remove('scrolled');
+        scrollToTop.classList.remove('visible');
+      }
+    });
+
+    // Scroll-triggered Animations
+    const elements = document.querySelectorAll('.hero-section, .collections-section, .reviews-section, .why-choose-section, .newsletter-section, .collection-card, .review-slide, .why-choose-card, h2, p, .newsletter-form');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    elements.forEach(element => observer.observe(element));
+
+    // Scroll-to-Top Functionality
+    document.querySelector('.scroll-to-top').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Price Range Filter
+    const priceRange = document.getElementById('price');
+    const priceValue = document.getElementById('price-value');
+    priceRange.addEventListener('input', () => {
+      priceValue.textContent = `$${priceRange.value}`;
+    });
+
+    // Quick View Modal
+    function openModal(title, price, description, image) {
+      const modal = document.getElementById('quick-view-modal');
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-price').textContent = price;
+      document.getElementById('modal-description').textContent = description;
+      document.getElementById('modal-image').src = image;
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('quick-view-modal');
+      modal.style.display = 'none';
+    }
+
+    // Close Modal on Outside Click
+    window.addEventListener('click', (e) => {
+      const modal = document.getElementById('quick-view-modal');
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Load More Products
+    function loadMoreProducts() {
+      const hiddenProducts = document.querySelectorAll('.product-card.hidden');
+      hiddenProducts.forEach(product => {
+        product.classList.remove('hidden');
+      });
+      document.querySelector('.load-more').style.display = 'none';
+    }
+
+    // Reviews Carousel
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.review-slide');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+      const slidesContainer = document.querySelector('.reviews-slides');
+      slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      showSlide(currentSlide);
+    }
+
+    // Auto-play carousel
+    setInterval(nextSlide, 5000);
+  </script>
+</body>
+</html>

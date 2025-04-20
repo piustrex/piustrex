@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shipping Details - Pius Trex Shoes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333333;
+      line-height: 1.8;
+      background: linear-gradient(135deg, #f9ecec 0%, #ffffff 100%);
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
+
+    .divider {
+      width: 120px;
+      height: 4px;
+      background: linear-gradient(to right, #d32f2f, #ff5252);
+      border-radius: 2px;
+      margin: 20px auto;
+      position: relative;
+    }
+    .divider::after {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      background: #FFD700;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.2); }
+      100% { transform: translateX(-50%) scale(1); }
+    }
+
+    header {
+      background: #ffffff;
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      transition: padding 0.3s ease, box-shadow 0.3s ease;
+    }
+    header.scrolled {
+      padding: 10px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo img {
+      width: 60px;
+      height: 60px;
+      transition: transform 0.3s ease;
+    }
+    .logo img:hover {
+      transform: rotate(10deg) scale(1.1);
+    }
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+    nav ul li a {
+      color: #333333;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 10px 15px;
+      border-radius: 25px;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+    nav ul li a:hover {
+      background: linear-gradient(135deg, #d32f2f 0%, #ff5252 100%);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+    nav ul li a.active {
+      background: linear-gradient(135deg, #d32f2f 0%, #ff5252 100%);
+      color: #ffffff;
+    }
+
+    .hero-section {
+      position: relative;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg') no-repeat center center/cover;
+      margin-top: 80px;
+    }
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #FFD700;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .hero-content.visible h1 {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hero-content p {
+      font-size: 20px;
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+    }
+    .hero-content.visible p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .progress-tracker {
+      padding: 20px 0;
+      background: #fafafa;
+      text-align: center;
+    }
+    .progress-steps {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      list-style: none;
+    }
+    .progress-step {
+      font-size: 16px;
+      font-weight: 600;
+      color: #999999;
+      position: relative;
+    }
+    .progress-step a {
+      color: #999999;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .progress-step:not(.active) a:hover {
+      color: #d32f2f;
+    }
+    .progress-step.active {
+      color: #d32f2f;
+    }
+    .progress-step.active a {
+      color: #d32f2f;
+      cursor: default;
+    }
+    .progress-step::after {
+      content: '>';
+      position: absolute;
+      right: -20px;
+      color: #999999;
+    }
+    .progress-step:last-child::after {
+      content: none;
+    }
+
+    .shipping-section {
+      padding: 80px 0;
+      background: #ffffff url('https://www.transparenttextures.com/patterns/asfalt-dark.png') repeat;
+    }
+    .shipping-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fafafa;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    .shipping-form h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #333333;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #333333;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .form-actions button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .back-btn {
+      background: #999999;
+      color: #ffffff;
+    }
+    .back-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(153, 153, 153, 0.5);
+    }
+    .next-btn {
+      background: linear-gradient(135deg, #d32f2f 0%, #ff5252 100%);
+      color: #ffffff;
+    }
+    .next-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(211, 47, 47, 0.5);
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #d32f2f 0%, #ff5252 100%);
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 50;
+    }
+    .scroll-to-top.visible {
+      opacity: 1;
+    }
+    .scroll-to-top:hover {
+      transform: scale(1.1);
+    }
+
+    footer {
+      background: linear-gradient(135deg, #333333 0%, #4a4a4a 100%);
+      color: #ffffff;
+      padding: 50px 0;
+    }
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    .footer-section h4 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    .footer-section ul {
+      list-style: none;
+    }
+    .footer-section ul li {
+      margin-bottom: 12px;
+    }
+    .footer-section ul li a {
+      color: #cccccc;
+      text-decoration: none;
+      font-weight: 300;
+      transition: color 0.3s ease;
+    }
+    .footer-section ul li a:hover {
+      color: #ffffff;
+    }
+    .footer-section p {
+      font-size: 14px;
+      color: #cccccc;
+      margin-bottom: 12px;
+      font-weight: 300;
+    }
+    .footer-section p a {
+      color: #d32f2f;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-section p a:hover {
+      color: #ff5252;
+    }
+    footer .copyright {
+      text-align: center;
+      font-size: 14px;
+      padding-top: 20px;
+      border-top: 1px solid #555555;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        height: 50vh;
+      }
+      .hero-content h1 {
+        font-size: 40px;
+      }
+      .hero-content p {
+        font-size: 16px;
+      }
+      .scroll-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+      .progress-steps {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .progress-step::after {
+        content: none;
+      }
+      .form-actions {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-section {
+        height: 40vh;
+      }
+      .hero-content h1 {
+        font-size: 32px;
+      }
+      .hero-content p {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <img src="assets/images/pius-trex-logo.png" alt="Pius Trex Shoes Logo - A circular emblem with a stylized shoe and dinosaur footprint" onerror="this.src='https://via.placeholder.com/60?text=Logo';">
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="size-guide.html">Size Guide</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="visible">Shipping Details</h1>
+      <p class="visible">Please provide your shipping information to proceed.</p>
+    </div>
+  </section>
+
+  <section class="progress-tracker">
+    <div class="container">
+      <ul class="progress-steps">
+        <li class="progress-step"><a href="cart.html">Cart</a></li>
+        <li class="progress-step"><a href="shipping.html">Shipping</a></li>
+        <li class="progress-step"><a href="payment.html" onclick="return false;">Payment</a></li>
+        <li class="progress-step"><a href="confirmation.html" onclick="return false;">Confirmation</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="shipping-section">
+    <div class="container">
+      <div class="shipping-form">
+        <h2>Shipping Information</h2>
+        <div class="form-group">
+          <label for="full-name">Full Name</label>
+          <input type="text" id="full-name" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <textarea id="address" placeholder="Enter your full address" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="Enter your phone number (e.g., +256123456789)" required>
+        </div>
+        <div class="form-actions">
+          <button class="back-btn" onclick="window.location.href='cart.html'">Back to Cart</button>
+          <button class="next-btn" onclick="proceedToPayment()">Proceed to Payment</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="scroll-to-top">
+    <i class="fas fa-chevron-up"></i>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="size-guide.html">Size Guide</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact Us</h4>
+          <p>Email: <a href="mailto:trexpius4@gmail.com">trexpius4@gmail.com</a></p>
+          <p>Phone: <a href="tel:+256762361467">+256 762 361 467</a></p>
+          <p>WhatsApp: <a href="https://wa.me/256748453425" target="_blank">+256 748 453 425</a></p>
+          <p>Address: Namugongo, Kampala, Uganda</p>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© 2025 Pius Trex Shoes. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!localStorage.getItem('cartItems') || !localStorage.getItem('paymentMethod')) {
+        alert('Please complete the cart step first.');
+        window.location.href = 'cart.html';
+      }
+
+      const steps = document.querySelectorAll('.progress-step');
+      steps.forEach(step => {
+        if (step.querySelector('a').href.includes('shipping.html')) {
+          step.classList.add('active');
+        }
+      });
+
+      const navLinks = document.querySelectorAll('nav ul li a');
+      navLinks.forEach(link => {
+        if (link.href.includes('cart.html')) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      const scrollToTop = document.querySelector('.scroll-to-top');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+        scrollToTop.classList.add('visible');
+      } else {
+        header.classList.remove('scrolled');
+        scrollToTop.classList.remove('visible');
+      }
+    });
+
+    const elements = document.querySelectorAll('.hero-section, h2, p');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    elements.forEach(element => observer.observe(element));
+
+    document.querySelector('.scroll-to-top').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    function proceedToPayment() {
+      const fullName = document.getElementById('full-name').value;
+      const address = document.getElementById('address').value;
+      const phone = document.getElementById('phone').value;
+      const phoneRegex = /^\+256\d{9}$/;
+
+      if (!fullName || !address || !phone) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+
+      if (!phoneRegex.test(phone)) {
+        alert('Please enter a valid Ugandan phone number (e.g., +256123456789).');
+        return;
+      }
+
+      const shippingDetails = { fullName, address, phone };
+      localStorage.setItem('shippingDetails', JSON.stringify(shippingDetails));
+      window.location.href = 'payment.html';
+    }
+  </script>
+</body>
+</html>
